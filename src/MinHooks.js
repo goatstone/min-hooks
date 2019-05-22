@@ -1,5 +1,5 @@
-import React from 'react';
-import './MinHooks.css';
+import React from 'react'
+import './MinHooks.css'
 
 function MinHooks() {
   return (
@@ -8,7 +8,7 @@ function MinHooks() {
       MinHooks
       </header>
     </section>
-  );
+  )
 }
 
-export default MinHooks;
+export default MinHooks

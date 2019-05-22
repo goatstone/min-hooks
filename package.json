@@ -18,6 +18,7 @@
     "dotenv": "6.2.0",
     "dotenv-expand": "4.2.0",
     "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
     "eslint-config-react-app": "^4.0.1",
     "eslint-loader": "2.1.2",
     "eslint-plugin-flowtype": "2.50.1",
@@ -65,7 +66,36 @@
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "airbnb",
+    "rules": {
+      "semi": [
+        "error",
+        "never"
+      ],
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      ],
+      "jsx-a11y/label-has-for": [
+        0
+      ],
+      "jsx-a11y/label-has-associated-control": [
+        0
+      ]
+    },
+    "globals": {
+      "describe": true,
+      "test": true,
+      "expect": true,
+      "document": true,
+      "beforeEach": true,
+      "it": true
+    }
   },
   "browserslist": {
     "production": [

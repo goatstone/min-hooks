@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.css';
+import './MinHooks.css';
 
-function App() {
+function MinHooks() {
   return (
     <section className="min-hooks">
       <header>
@@ -11,4 +11,4 @@ function App() {
   );
 }
 
-export default App;
+export default MinHooks;

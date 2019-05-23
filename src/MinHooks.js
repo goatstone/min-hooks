@@ -12,12 +12,15 @@ function MinHooks() {
       <header>
         MinHooks
       </header>
-      { state }
+      {state}
       <button
-        onClick={ () => setState('xxx') }
-        >
-        set state </button>
-        z{ a }a
+        type="button"
+        onClick={() => setState('xxx')
+        }
+      >
+        set state
+      </button>
+      {a}
     </section>
   )
 }

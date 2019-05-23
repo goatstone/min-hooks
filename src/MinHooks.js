@@ -4,23 +4,31 @@ import { StoreContext } from './StoreContext'
 
 function MinHooks() {
   // local state
-  const [state, setState] = useState('abc')
-  const { a } = useContext(StoreContext)
+  const [localState, localSetState] = useState('abc')
+  // global state
+  const { state, dispatch } = useContext(StoreContext)
 
   return (
     <section className="min-hooks">
       <header>
         MinHooks
       </header>
-      {state}
+      {localState}
       <button
         type="button"
-        onClick={() => setState('xxx')
+        onClick={() => localSetState('xxx')
         }
       >
         set state
       </button>
-      {a}
+      <button
+        type="button"
+        onClick={() => dispatch({ action: 'a' })
+        }
+      >
+        set state
+      </button>
+      {state && state.a && state.a}
     </section>
   )
 }

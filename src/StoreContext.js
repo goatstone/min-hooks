@@ -23,7 +23,7 @@ function StoreProvider({ children }) {
   )
 }
 StoreProvider.propTypes = {
-  children: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 export { StoreContext, StoreProvider }

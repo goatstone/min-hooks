@@ -69,6 +69,7 @@
   "eslintConfig": {
     "extends": "airbnb",
     "rules": {
+      "global-require": 0,
       "semi": [
         "error",
         "never"
@@ -95,7 +96,9 @@
       "expect": true,
       "document": true,
       "beforeEach": true,
-      "it": true
+      "it": true,
+      "jest": true,
+      "beforeAll": true
     }
   },
   "browserslist": {

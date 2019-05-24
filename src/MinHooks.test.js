@@ -1,34 +1,37 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import Enzyme, { mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import Enzyme, { mount } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
 
-Enzyme.configure({ adapter: new Adapter() });
+Enzyme.configure({ adapter: new Adapter() })
+
+let MinHooks
+let StoreProvider
+const mockexpectedA = '32'
 
 beforeEach(() => {
   jest.resetModules()
 })
 
 describe('<MinHooks />', () => {
-  let MinHooks
-  let StoreProvider
-  let mockexpectedA = '32'
+  let element
   beforeAll(() => {
     jest.mock('./init-state', () => ({
-        a: mockexpectedA, b: 2  
+      a: mockexpectedA, b: 2,
     }))
+    /* eslint prefer-destructuring: 0 */
     StoreProvider = require('./StoreContext').StoreProvider
     MinHooks = require('./MinHooks').default
-  })
-  it('should have the value set in init', () => {
-    const is = require('./init-state')
-    const w = mount(
+    element = mount(
       <StoreProvider>
         <MinHooks />
-      </StoreProvider>
+      </StoreProvider>,
     )
-
-    expect(w.find('article').length).toBe(1)
-    expect(w.find('article').text()).toBe(mockexpectedA)
+  })
+  it('should have a particular shape', () => {
+    expect(element.find('article').length).toBe(1)
+    expect(element.find('header').length).toBe(1)
+  })
+  it('should have the value set in initState', () => {
+    expect(element.find('article').text()).toBe(mockexpectedA)
   })
 })

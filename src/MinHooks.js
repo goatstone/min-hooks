@@ -28,7 +28,7 @@ function MinHooks() {
       >
         set state
       </button>
-      {state && state.a && state.a}
+      {state.a}
     </section>
   )
 }

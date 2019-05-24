@@ -28,7 +28,9 @@ function MinHooks() {
       >
         set state
       </button>
-      {state.a}
+      <article className="state-a">
+        {state.a}
+      </article>
     </section>
   )
 }

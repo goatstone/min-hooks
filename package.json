@@ -1,5 +1,6 @@
 {
   "name": "min-hooks",
+  "homepage": "http://JoseHerminioCollas.github.io/min-hooks",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -64,7 +65,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"    
   },
   "eslintConfig": {
     "extends": "airbnb",
@@ -165,6 +168,7 @@
   },
   "devDependencies": {
     "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.13.1"
+    "enzyme-adapter-react-16": "^1.13.1",
+    "gh-pages": "^2.0.1"
   }
 }

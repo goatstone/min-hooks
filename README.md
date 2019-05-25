@@ -2,6 +2,8 @@
 
 A project to work with React Hooks
 
+[![CircleCI](https://circleci.com/gh/JoseHerminioCollas/min-hooks/tree/master.svg?style=svg)](https://circleci.com/gh/JoseHerminioCollas/min-hooks/tree/master)
+
 Get the project
 
 ### `git clone https://github.com/JoseHerminioCollas/min-hooks.git`

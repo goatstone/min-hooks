@@ -28,10 +28,22 @@ describe('<MinHooks />', () => {
     )
   })
   it('should have a particular shape', () => {
-    expect(element.find('article').length).toBe(1)
+    expect(element.find('article').length).toBe(2)
+    expect(element.find('button').length).toBe(2)
     expect(element.find('header').length).toBe(1)
   })
   it('should have the value set in initState', () => {
-    expect(element.find('article').text()).toBe(mockexpectedA)
+    expect(element.find('article.global-state').text()).toBe(mockexpectedA)
+  })
+  it('should respond to local button ', () => {
+    expect(element.find('article.local-state').text()).toBe('abc')
+    element.find('button.local-state').simulate('click')
+    expect(element.find('article.local-state').text()).toBe('xxx')
+  })
+  it('should respond to a global button', () => {
+    expect(element.find('article.global-state').text()).toBe(mockexpectedA)
+    expect(element.find('button.global-state').length).toBe(1)
+    element.find('button.global-state').simulate('click')
+    expect(element.find('article.global-state').text()).toBe('2000')
   })
 })

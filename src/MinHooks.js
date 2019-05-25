@@ -13,9 +13,12 @@ function MinHooks() {
       <header>
         MinHooks
       </header>
-      {localState}
+      <article className="local-state">
+        {localState}
+      </article>
       <button
         type="button"
+        className="local-state"
         onClick={() => localSetState('xxx')
         }
       >
@@ -23,12 +26,13 @@ function MinHooks() {
       </button>
       <button
         type="button"
+        className="global-state"
         onClick={() => dispatch({ action: 'a' })
         }
       >
         set state
       </button>
-      <article className="state-a">
+      <article className="global-state">
         {state.a}
       </article>
     </section>

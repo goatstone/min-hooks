@@ -15,12 +15,12 @@ beforeEach(() => {
 describe('<MinHooks />', () => {
   let element
   beforeAll(() => {
-    jest.mock('./init-state', () => ({
+    jest.mock('../init-state', () => ({
       a: mockexpectedA, b: 2,
     }))
     /* eslint prefer-destructuring: 0 */
-    StoreProvider = require('./StoreContext').StoreProvider
-    MinHooks = require('./MinHooks').default
+    StoreProvider = require('../StoreContext').StoreProvider
+    MinHooks = require('../MinHooks').default
     element = mount(
       <StoreProvider>
         <MinHooks />

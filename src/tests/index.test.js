@@ -20,7 +20,7 @@ describe('index', () => {
       value: () => document.createElement('div'),
     })
     try {
-      require('./index')
+      require('../index')
     } catch (error) {
       // fail the test on error
       expect(false).toBe(true)

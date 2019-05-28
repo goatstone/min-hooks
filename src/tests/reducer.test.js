@@ -1,22 +1,38 @@
-import Enzyme from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
 import reducer from '../reducer'
+import actionTypes from '../action-types'
 
-Enzyme.configure({ adapter: new Adapter() })
-
-beforeEach(() => {
-  jest.resetModules()
-})
+let preState
 
 describe('reducer', () => {
-  beforeAll(() => {
+  beforeEach(() => {
+    preState = { widgetNames: [], lastUpdate: '' }
+  })
+  it('should return new state with string added', () => {
+    const expectedString = 'abc'
+    const newState = reducer(
+      preState,
+      {
+        type: actionTypes.ADD_WIDGET_NAME,
+        name: expectedString,
+      },
+    )
+    expect(newState.widgetNames.length).toBe(1)
+    expect(newState.widgetNames[newState.widgetNames.length - 1])
+      .toBe(expectedString)
   })
   it('should return proper values', () => {
-    const a = reducer({ a: 2 }, { type: 'A' })
-    expect(a.a).toBe(200)
+    const newState = reducer(preState,
+      { type: actionTypes.EDIT_WIDGET_NAME })
+    expect(newState).toBeTruthy()
   })
-  it('should return proper values', () => {
-    const a = reducer({ a: 2 }, { type: 'XX' })
-    expect(a.a).toBe(2000)
+  it('', () => {
+    const newState = reducer(preState,
+      { type: actionTypes.DELETE_WIDGET_NAME })
+    expect(newState).toBeTruthy()
+  })
+  it('', () => {
+    const newState = reducer(preState,
+      { type: actionTypes.SHOW_MESSAGE })
+    expect(newState).toBeTruthy()
   })
 })

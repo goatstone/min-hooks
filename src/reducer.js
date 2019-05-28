@@ -1,9 +1,19 @@
+import actionTypes from './action-types'
+
 function reducer(state, action) {
   switch (action.type) {
-    case 'A':
-      return Object.assign({}, state, { a: 200 })
+    case actionTypes.ADD_WIDGET_NAME:
+      return Object.assign({}, state, {
+        widgetNames: [action.name, ...state.widgetNames],
+      })
+    case actionTypes.EDIT_WIDGET_NAME:
+      return Object.assign({}, state)
+    case actionTypes.DELETE_WIDGET_NAME:
+      return Object.assign({}, state)
+    case actionTypes.SHOW_MESSAGE:
+      return Object.assign({}, state)
     default:
-      return Object.assign({}, state, { a: 2000 })
+      throw new Error('action type does not exist')
   }
 }
 

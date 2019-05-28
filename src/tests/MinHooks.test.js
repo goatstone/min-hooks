@@ -12,7 +12,7 @@ beforeEach(() => {
   jest.resetModules()
 })
 
-describe('<MinHooks />', () => {
+describe.skip('<MinHooks />', () => {
   let element
   beforeAll(() => {
     jest.mock('../init-state', () => ({

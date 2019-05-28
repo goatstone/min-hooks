@@ -1,3 +1,3 @@
-const initState = { a: 1, b: 2 }
+const initState = { widgetNames: [], lastUpdate: '' }
 
 export default initState

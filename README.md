@@ -59,7 +59,7 @@ https://facebook.github.io/create-react-app/docs/getting-started
 
 Get the project
 
-### `git clone https://github.com/JoseHerminioCollas/min-hooks.git`
+`git clone https://github.com/JoseHerminioCollas/min-hooks.git`
 
 Move into the directory
 

@@ -6,6 +6,11 @@ function replaceName(state, action) {
   newArray[indexOfWidgetName] = action.newName
   return newArray
 }
+function deleteName(state, action) {
+  const newArray = [...state.widgetNames]
+  newArray.splice(action.name, 1)
+  return newArray
+}
 function reducer(state, action) {
   switch (action.type) {
     case actionTypes.ADD_WIDGET_NAME:
@@ -19,7 +24,7 @@ function reducer(state, action) {
         { widgetNames: replaceName(state, action) },
       )
     case actionTypes.DELETE_WIDGET_NAME:
-      return Object.assign({}, state)
+      return Object.assign({}, state, { widgetNames: deleteName(state, action) })
     case actionTypes.SHOW_MESSAGE:
       return Object.assign({}, state)
     default:

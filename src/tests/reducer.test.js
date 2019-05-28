@@ -34,10 +34,16 @@ describe('reducer', () => {
     expect(newState.widgetNames[newState.widgetNames.length - 1])
       .toBe(newName)
   })
-  it('', () => {
+  it('should delete a given name', () => {
+    const nameDeleted = 'abc'
+    preState.widgetNames.push(nameDeleted)
     const newState = reducer(preState,
-      { type: actionTypes.DELETE_WIDGET_NAME })
-    expect(newState).toBeTruthy()
+      {
+        type: actionTypes.DELETE_WIDGET_NAME,
+        name: nameDeleted,
+      })
+    expect(newState.widgetNames.length).toBe(preState.widgetNames.length - 1)
+    expect(newState.widgetNames.includes(nameDeleted)).toBe(false)
   })
   it('', () => {
     const newState = reducer(preState,

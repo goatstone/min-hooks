@@ -7,7 +7,7 @@ describe('reducer', () => {
   beforeEach(() => {
     preState = { widgetNames: [], lastUpdate: '' }
   })
-  it('should return new state with string added', () => {
+  it('should return a state with string added', () => {
     const expectedString = 'abc'
     const newState = reducer(
       preState,
@@ -20,10 +20,19 @@ describe('reducer', () => {
     expect(newState.widgetNames[newState.widgetNames.length - 1])
       .toBe(expectedString)
   })
-  it('should return proper values', () => {
+  it('should return a state with an edited value', () => {
+    const previousName = 'abc'
+    const newName = 'xyz'
+    preState.widgetNames.push(previousName)
     const newState = reducer(preState,
-      { type: actionTypes.EDIT_WIDGET_NAME })
+      {
+        type: actionTypes.EDIT_WIDGET_NAME,
+        previousName,
+        newName,
+      })
     expect(newState).toBeTruthy()
+    expect(newState.widgetNames[newState.widgetNames.length - 1])
+      .toBe(newName)
   })
   it('', () => {
     const newState = reducer(preState,

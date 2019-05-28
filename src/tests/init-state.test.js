@@ -7,6 +7,6 @@ describe('initState', () => {
   })
   it('the properties should be of particular types', () => {
     expect(Array.isArray(initState.widgetNames)).toBe(true)
-    expect(typeof initState.lastUpdate).toBe('string')    
+    expect(typeof initState.lastUpdate).toBe('string')
   })
 })

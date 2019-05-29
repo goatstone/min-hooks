@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import './MinHooks.css'
 import { StoreContext } from './StoreContext'
+import actionTypes from './action-types'
 
 function MinHooks() {
   // local state
@@ -22,18 +23,26 @@ function MinHooks() {
         onClick={() => localSetState('xxx')
         }
       >
-        set state
+        set local state
       </button>
       <button
         type="button"
         className="global-state"
-        onClick={() => dispatch({ action: 'a' })
+        onClick={() => dispatch({ type: actionTypes.SHOW_MESSAGE })
         }
       >
-        set state
+        set to true
+      </button>
+      <button
+        type="button"
+        className="global-state-2"
+        onClick={() => dispatch({ type: actionTypes.HIDE_MESSAGE })
+        }
+      >
+      set to false
       </button>
       <article className="global-state">
-        {state.a}
+        {state.isMessageShowing ? 'T' : 'F'}
       </article>
     </section>
   )

@@ -6,17 +6,19 @@ Enzyme.configure({ adapter: new Adapter() })
 
 let MinHooks
 let StoreProvider
-const mockexpectedA = '32'
+// const mockexpectedA = '32'
 
 beforeEach(() => {
   jest.resetModules()
 })
 
-describe.skip('<MinHooks />', () => {
+describe('<MinHooks />', () => {
   let element
   beforeAll(() => {
     jest.mock('../init-state', () => ({
-      a: mockexpectedA, b: 2,
+      widgetNameList: [],
+      lastUpdated: '',
+      isMessageShowing: false,
     }))
     /* eslint prefer-destructuring: 0 */
     StoreProvider = require('../StoreContext').StoreProvider
@@ -29,11 +31,11 @@ describe.skip('<MinHooks />', () => {
   })
   it('should have a particular shape', () => {
     expect(element.find('article').length).toBe(2)
-    expect(element.find('button').length).toBe(2)
+    expect(element.find('button').length).toBe(3)
     expect(element.find('header').length).toBe(1)
   })
   it('should have the value set in initState', () => {
-    expect(element.find('article.global-state').text()).toBe(mockexpectedA)
+    expect(element.find('article.global-state').text()).toBe('F')
   })
   it('should respond to local button ', () => {
     expect(element.find('article.local-state').text()).toBe('abc')
@@ -41,9 +43,20 @@ describe.skip('<MinHooks />', () => {
     expect(element.find('article.local-state').text()).toBe('xxx')
   })
   it('should respond to a global button', () => {
-    expect(element.find('article.global-state').text()).toBe(mockexpectedA)
+    expect(element.find('article.global-state').text()).toBe('F')
     expect(element.find('button.global-state').length).toBe(1)
     element.find('button.global-state').simulate('click')
-    expect(element.find('article.global-state').text()).toBe('2000')
+    expect(element.find('article.global-state').text()).toBe('T')
+  })
+  it('should respond to a global button show false', () => {
+    jest.mock('../init-state', () => ({
+      widgetNameList: [],
+      lastUpdated: '',
+      isMessageShowing: true,
+    }))
+    expect(element.find('article.global-state').text()).toBe('T')
+    expect(element.find('button.global-state-2').length).toBe(1)
+    element.find('button.global-state-2').simulate('click')
+    expect(element.find('article.global-state').text()).toBe('F')
   })
 })

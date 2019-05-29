@@ -30,7 +30,7 @@ function reducer(state, action) {
     case actionTypes.HIDE_MESSAGE:
       return Object.assign({}, state, { isMessageShowing: false })
     default:
-      throw new Error('action type does not exist')
+      throw new Error(`action ${action.type} type does not exist`)
   }
 }
 export default reducer

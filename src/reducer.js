@@ -26,7 +26,9 @@ function reducer(state, action) {
     case actionTypes.DELETE_WIDGET_NAME:
       return Object.assign({}, state, { widgetNames: deleteName(state, action) })
     case actionTypes.SHOW_MESSAGE:
-      return Object.assign({}, state)
+      return Object.assign({}, state, { isMessageShowing: true })
+    case actionTypes.HIDE_MESSAGE:
+      return Object.assign({}, state, { isMessageShowing: false })
     default:
       throw new Error('action type does not exist')
   }

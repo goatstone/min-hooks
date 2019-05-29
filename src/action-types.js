@@ -4,6 +4,7 @@ const actionTypes = {
   EDIT_WIDGET_NAME: 'EDIT_WIDGET_NAME',
   DELETE_WIDGET_NAME: 'DELETE_WIDGET_NAME',
   SHOW_MESSAGE: 'SHOW_MESSAGE',
+  HIDE_MESSAGE: 'HIDE_MESSAGE',
 }
 
 export default actionTypes

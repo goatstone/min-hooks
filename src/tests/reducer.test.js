@@ -5,7 +5,11 @@ let preState
 
 describe('reducer', () => {
   beforeEach(() => {
-    preState = { widgetNames: [], lastUpdate: '' }
+    preState = {
+      widgetNames: [],
+      lastUpdate: '',
+      isMessageShowing: false,
+    }
   })
   it('should return a state with string added', () => {
     const expectedString = 'abc'
@@ -45,9 +49,16 @@ describe('reducer', () => {
     expect(newState.widgetNames.length).toBe(preState.widgetNames.length - 1)
     expect(newState.widgetNames.includes(nameDeleted)).toBe(false)
   })
-  it('', () => {
+  it('should return a state with the isMessageShowing value true', () => {
+    preState.isMessageShowing = false
     const newState = reducer(preState,
       { type: actionTypes.SHOW_MESSAGE })
-    expect(newState).toBeTruthy()
+    expect(newState.isMessageShowing).toBe(true)
+  })
+  it('should return a state with the isMessageShowing value false', () => {
+    preState.isMessageShowing = true
+    const newState = reducer(preState,
+      { type: actionTypes.HIDE_MESSAGE })
+    expect(newState.isMessageShowing).toBe(false)
   })
 })

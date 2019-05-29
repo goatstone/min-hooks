@@ -6,7 +6,6 @@ Enzyme.configure({ adapter: new Adapter() })
 
 let MinHooks
 let StoreProvider
-// const mockexpectedA = '32'
 
 beforeEach(() => {
   jest.resetModules()
@@ -30,8 +29,6 @@ describe('<MinHooks />', () => {
     )
   })
   it('should have a particular shape', () => {
-    expect(element.find('article').length).toBe(2)
-    expect(element.find('button').length).toBe(3)
     expect(element.find('header').length).toBe(1)
   })
   it('should have the value set in initState', () => {

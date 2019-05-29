@@ -7,7 +7,7 @@ function MinHooks() {
   // local state
   const [localState, localSetState] = useState('abc')
   // global state
-  const { state, dispatch } = useContext(StoreContext)
+  const { state, dispatch, actions } = useContext(StoreContext)
 
   return (
     <section className="min-hooks">
@@ -16,6 +16,17 @@ function MinHooks() {
       </header>
       <article className="local-state">
         {localState}
+      </article>
+      <button
+        type="button"
+        className="add-widget"
+        onClick={() => actions.addWidgetName('abcdef')
+        }
+      >
+        add widget name
+      </button>
+      <article>
+        {state.widgetNames && state.widgetNames[0]}
       </article>
       <button
         type="button"

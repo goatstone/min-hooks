@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from 'react'
 import PropTypes from 'prop-types'
 import initState from './init-state'
 import reducer from './reducer'
-import useActions from './use-action'
+import useActions from './use-actions'
 
 const StoreContext = createContext(initState)
 

@@ -61,4 +61,7 @@ describe('reducer', () => {
       { type: actionTypes.HIDE_MESSAGE })
     expect(newState.isMessageShowing).toBe(false)
   })
+  it('should throw an error when an incorrect action type is used', () => {
+    expect(() => reducer({}, { type: 'DOES_NOT_EXIST' })).toThrow()
+  })
 })

@@ -1,19 +1,30 @@
-import React, { useState, useContext } from 'react'
+import React from 'react'
 import './MinHooks.css'
 import { StoreContext } from './StoreContext'
 import actionTypes from './action-types'
 
-function MinHooks() {
+interface initStateInterface {
+  widgetNames: any,
+  lastUpdate: string,
+  isMessageShowing: boolean,
+}
+interface StoreContextInterface {
+  state: initStateInterface,
+  dispatch: any,
+  actions: any,
+}
+const MinHooks: React.FC = () => {
   // local state
-  const [localState, localSetState] = useState('abc')
+  const [localState, localSetState] = React.useState('abc')
   // global state
-  const { state, dispatch, actions } = useContext(StoreContext)
+  const { state, dispatch, actions }: StoreContextInterface = React.useContext(StoreContext)
 
   return (
     <section className="min-hooks">
       <header>
         MinHooks
       </header>
+      {1}
       <article className="local-state">
         {localState}
       </article>

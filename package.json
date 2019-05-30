@@ -60,7 +60,12 @@
     "webpack": "4.29.6",
     "webpack-dev-server": "3.2.1",
     "webpack-manifest-plugin": "2.0.4",
-    "workbox-webpack-plugin": "4.2.0"
+    "workbox-webpack-plugin": "4.2.0",
+    "typescript": "3.5.1",
+    "@types/jest": "24.0.13",
+    "@types/node": "12.0.3",
+    "@types/react": "16.8.19",
+    "@types/react-dom": "16.8.4"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -70,7 +75,7 @@
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
-    "extends": "airbnb",
+    "extends":  "airbnb-typescript",
     "rules": {
       "global-require": 0,
       "semi": [
@@ -82,7 +87,8 @@
         {
           "extensions": [
             ".js",
-            ".jsx"
+            ".jsx",
+            ".tsx"
           ]
         }
       ],
@@ -169,6 +175,7 @@
   "devDependencies": {
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.1",
+    "eslint-config-airbnb-typescript": "^4.0.0",
     "gh-pages": "^2.0.1",
     "jsdom": "^15.1.0"
   }

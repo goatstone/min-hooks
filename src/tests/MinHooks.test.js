@@ -14,10 +14,10 @@ beforeEach(() => {
 describe('<MinHooks />', () => {
   let element
   beforeAll(() => {
-    jest.mock('../init-state', () => ({
+    jest.mock('../state', () => ({
       widgetNameList: [],
       lastUpdated: '',
-      isMessageShowing: false,
+      isShowingMessage: false,
     }))
     /* eslint prefer-destructuring: 0 */
     StoreProvider = require('../StoreContext').StoreProvider
@@ -46,10 +46,10 @@ describe('<MinHooks />', () => {
     expect(element.find('article.global-state').text()).toBe('T')
   })
   it('should respond to a global button show false', () => {
-    jest.mock('../init-state', () => ({
+    jest.mock('../state', () => ({
       widgetNameList: [],
       lastUpdated: '',
-      isMessageShowing: true,
+      isShowingMessage: true,
     }))
     expect(element.find('article.global-state').text()).toBe('T')
     expect(element.find('button.global-state-2').length).toBe(1)

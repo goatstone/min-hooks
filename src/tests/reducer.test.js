@@ -8,7 +8,7 @@ describe('reducer', () => {
     preState = {
       widgetNames: [],
       lastUpdate: '',
-      isMessageShowing: false,
+      isShowingMessage: false,
     }
   })
   it('should return a state with string added', () => {
@@ -49,17 +49,17 @@ describe('reducer', () => {
     expect(newState.widgetNames.length).toBe(preState.widgetNames.length - 1)
     expect(newState.widgetNames.includes(nameDeleted)).toBe(false)
   })
-  it('should return a state with the isMessageShowing value true', () => {
-    preState.isMessageShowing = false
+  it('should return a state with the isShowingMessage value true', () => {
+    preState.isShowingMessage = false
     const newState = reducer(preState,
       { type: actionTypes.SHOW_MESSAGE })
-    expect(newState.isMessageShowing).toBe(true)
+    expect(newState.isShowingMessage).toBe(true)
   })
-  it('should return a state with the isMessageShowing value false', () => {
-    preState.isMessageShowing = true
+  it('should return a state with the isShowingMessage value false', () => {
+    preState.isShowingMessage = true
     const newState = reducer(preState,
       { type: actionTypes.HIDE_MESSAGE })
-    expect(newState.isMessageShowing).toBe(false)
+    expect(newState.isShowingMessage).toBe(false)
   })
   it('should throw an error when an incorrect action type is used', () => {
     expect(() => reducer({}, { type: 'DOES_NOT_EXIST' })).toThrow()

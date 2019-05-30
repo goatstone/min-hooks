@@ -75,7 +75,7 @@
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
-    "extends":  "airbnb-typescript",
+    "extends": "airbnb-typescript",
     "rules": {
       "global-require": 0,
       "semi": [

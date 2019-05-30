@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import initState from './init-state'
+import defaultState from './state'
 import reducer from './reducer'
 import useActions from './use-actions'
 
-const StoreContext = React.createContext<any>(initState)
+const StoreContext = React.createContext<any>(defaultState)
 
 const StoreProvider: React.FC = ({ children }) => {
-  const [state, dispatch] = React.useReducer(reducer, initState)
+  const [state, dispatch] = React.useReducer(reducer, defaultState)
   const actions = useActions(state, dispatch)
 
   return (

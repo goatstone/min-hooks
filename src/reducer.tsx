@@ -1,17 +1,18 @@
 import actionTypes from './action-types'
+import { StateInterface } from './state'
 
-function replaceName(state, action) {
+function replaceName(state: StateInterface, action: any) {
   const newArray = [...state.widgetNames]
   const indexOfWidgetName = state.widgetNames.indexOf(action.previousName)
   newArray[indexOfWidgetName] = action.newName
   return newArray
 }
-function deleteName(state, action) {
+function deleteName(state: StateInterface, action: any) {
   const newArray = [...state.widgetNames]
   newArray.splice(action.name, 1)
   return newArray
 }
-function reducer(state, action) {
+function reducer(state: StateInterface, action: any) {
   switch (action.type) {
     case actionTypes.ADD_WIDGET_NAME:
       return Object.assign({}, state, {
@@ -26,9 +27,9 @@ function reducer(state, action) {
     case actionTypes.DELETE_WIDGET_NAME:
       return Object.assign({}, state, { widgetNames: deleteName(state, action) })
     case actionTypes.SHOW_MESSAGE:
-      return Object.assign({}, state, { isMessageShowing: true })
+      return Object.assign({}, state, { isShowingMessage: true })
     case actionTypes.HIDE_MESSAGE:
-      return Object.assign({}, state, { isMessageShowing: false })
+      return Object.assign({}, state, { isShowingMessage: false })
     default:
       throw new Error(`action ${action.type} type does not exist`)
   }

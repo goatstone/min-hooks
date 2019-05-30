@@ -2,14 +2,10 @@ import React from 'react'
 import './MinHooks.css'
 import { StoreContext } from './StoreContext'
 import actionTypes from './action-types'
+import { StateInterface } from './state'
 
-interface initStateInterface {
-  widgetNames: any,
-  lastUpdate: string,
-  isMessageShowing: boolean,
-}
 interface StoreContextInterface {
-  state: initStateInterface,
+  state: StateInterface,
   dispatch: any,
   actions: any,
 }
@@ -64,7 +60,7 @@ const MinHooks: React.FC = () => {
       set to false
       </button>
       <article className="global-state">
-        {state.isMessageShowing ? 'T' : 'F'}
+        {state.isShowingMessage ? 'T' : 'F'}
       </article>
     </section>
   )

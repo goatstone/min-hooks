@@ -1,7 +1,7 @@
 import React from 'react'
 import './MinHooks.css'
 import { StoreContext } from './StoreContext'
-import actionTypes from './action-types'
+import { actionTypes } from './action'
 import { StateInterface } from './state'
 
 interface StoreContextInterface {

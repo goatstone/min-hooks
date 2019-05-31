@@ -1,3 +1,6 @@
+export interface ActionsInterface {
+  addWidgetName: (widgetName: string) => void
+}
 
 const actionTypes = {
   ADD_WIDGET_NAME: 'ADD_WIDGET_NAME',
@@ -7,4 +10,4 @@ const actionTypes = {
   HIDE_MESSAGE: 'HIDE_MESSAGE',
 }
 
-export default actionTypes
+export { actionTypes }

@@ -1,5 +1,5 @@
 import reducer from '../reducer'
-import actionTypes from '../action-types'
+import { actionTypes } from '../action'
 
 let preState
 

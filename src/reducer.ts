@@ -1,4 +1,4 @@
-import actionTypes from './action-types'
+import { actionTypes } from './action'
 import { StateInterface } from './state'
 
 function replaceName(state: StateInterface, action: any) {

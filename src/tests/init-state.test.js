@@ -1,6 +1,6 @@
-import initState from '../init-state'
+import initState from '../state'
 
-describe('initState', () => {
+describe('State', () => {
   it('should have certain properties', () => {
     expect(initState).toHaveProperty('widgetNames')
     expect(initState).toHaveProperty('lastUpdate')

@@ -1,8 +1,7 @@
 import { StateInterface } from './state'
 import { ActionsInterface, actionTypes } from './action'
 
-function useAction(state: StateInterface, dispatch: (arg0: object) => void):
-ActionsInterface {
+function useAction(state: StateInterface, dispatch: (arg0: object) => void): ActionsInterface {
   function addWidgetName(widgetName: string): void {
     if (state.widgetNames.includes(widgetName)) {
       dispatch({
@@ -23,14 +22,20 @@ ActionsInterface {
       newWidgetName,
     })
   }
-  function deleteWidgetName() {
-
+  function deleteWidgetName(widgetName: string) {
+    dispatch({
+      type: actionTypes.DELETE_WIDGET_NAME,
+      widgetName,
+    })
   }
-  function showMessage() {
-
+  function showMessage(message: string) {
+    dispatch({
+      type: actionTypes.SHOW_MESSAGE,
+      message,
+    })
   }
   function hideMessage() {
-
+    dispatch({ type: actionTypes.HIDE_MESSAGE })
   }
   return {
     addWidgetName,

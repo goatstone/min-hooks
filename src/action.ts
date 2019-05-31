@@ -1,8 +1,8 @@
 export interface ActionsInterface {
   addWidgetName: (widgetName: string) => void
   editWidgetName: (widgetName: string, newWidgetName: string) => void
-  deleteWidgetName: () => void
-  showMessage: () => void
+  deleteWidgetName: (widgetName: string) => void
+  showMessage: (message: string) => void
   hideMessage: () => void
 }
 

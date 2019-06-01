@@ -18,50 +18,70 @@ const MinHooks: React.FC = () => {
   return (
     <section className="min-hooks">
       <header>
-        MinHooks
+        Widgets
       </header>
-      {1}
-      <article className="local-state">
-        {localState}
+      <article>
+        <h3>Widget Names</h3>
+        <ul>
+          {
+            state.widgetNames.map(el => (
+              <li key={el}>
+                {el}
+              </li>
+            ))
+          }
+        </ul>
       </article>
       <button
         type="button"
         className="add-widget"
-        onClick={() => actions.addWidgetName('abcdef')
-        }
+        onClick={() => actions.addWidgetName('abcdef')}
       >
-        add widget name
-      </button>
-      <article>
-        {state.widgetNames && state.widgetNames[0]}
-      </article>
-      <button
-        type="button"
-        className="local-state"
-        onClick={() => localSetState('xxx')
-        }
-      >
-        set local state
+        Add Widget Name
       </button>
       <button
         type="button"
-        className="global-state"
-        onClick={() => dispatch({ type: actionTypes.SHOW_MESSAGE })
-        }
+        className="add-widget"
+        onClick={() => actions.editWidgetName('abc', 'ss')}
       >
-        set to true
+        Edit Widget Name
       </button>
-      <button
-        type="button"
-        className="global-state-2"
-        onClick={() => dispatch({ type: actionTypes.HIDE_MESSAGE })
-        }
-      >
-      set to false
-      </button>
-      <article className="global-state">
-        {state.isShowingMessage ? 'T' : 'F'}
-      </article>
+      <section>
+        <h3>Show Message</h3>
+        <button
+          type="button"
+          className="global-state"
+          onClick={() => dispatch({ type: actionTypes.SHOW_MESSAGE })
+          }
+        >
+          set to true
+        </button>
+        <button
+          type="button"
+          className="global-state-2"
+          onClick={() => dispatch({ type: actionTypes.HIDE_MESSAGE })
+          }
+        >
+          set to false
+        </button>
+        <article className="global-state">
+          {state.isShowingMessage ? 'T' : 'F'}
+        </article>
+      </section>
+      <section>
+        <h3>Local State</h3>
+        <button
+          type="button"
+          className="local-state"
+          onClick={() => localSetState('xxx')
+          }
+        >
+          set local state
+        </button>
+        <article className="local-state">
+          {localState}
+        </article>
+      </section>
     </section>
   )
 }

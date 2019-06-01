@@ -15,7 +15,7 @@ describe('<MinHooks />', () => {
   let element
   beforeAll(() => {
     jest.mock('../state', () => ({
-      widgetNameList: [],
+      widgetNames: [],
       lastUpdated: '',
       isShowingMessage: false,
     }))

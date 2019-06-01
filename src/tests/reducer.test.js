@@ -25,18 +25,18 @@ describe('reducer', () => {
       .toBe(expectedString)
   })
   it('should return a state with an edited value', () => {
-    const previousName = 'abc'
-    const newName = 'xyz'
-    preState.widgetNames.push(previousName)
+    const widgetName = 'abc'
+    const newWidgetName = 'xyz'
+    preState.widgetNames.push(widgetName)
     const newState = reducer(preState,
       {
         type: actionTypes.EDIT_WIDGET_NAME,
-        previousName,
-        newName,
+        widgetName,
+        newWidgetName,
       })
     expect(newState).toBeTruthy()
     expect(newState.widgetNames[newState.widgetNames.length - 1])
-      .toBe(newName)
+      .toBe(newWidgetName)
   })
   it('should delete a given name', () => {
     const nameDeleted = 'abc'

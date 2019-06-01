@@ -20,7 +20,7 @@ const MinHooks: React.FC = () => {
       <header>
         Widgets
       </header>
-      <article>
+      <section>
         <h3>Widget Names</h3>
         <ul>
           {
@@ -31,21 +31,31 @@ const MinHooks: React.FC = () => {
             ))
           }
         </ul>
-      </article>
-      <button
-        type="button"
-        className="add-widget"
-        onClick={() => actions.addWidgetName('abcdef')}
-      >
-        Add Widget Name
-      </button>
-      <button
-        type="button"
-        className="add-widget"
-        onClick={() => actions.editWidgetName('abc', 'ss')}
-      >
-        Edit Widget Name
-      </button>
+      </section>
+      <section className="actions">
+        <h3>Actions</h3>
+        <button
+          type="button"
+          className="add-widget"
+          onClick={() => actions.addWidgetName('abc')}
+        >
+          Add Widget Name
+        </button>
+        <button
+          type="button"
+          className="add-widget"
+          onClick={() => actions.editWidgetName('abc', 'ss')}
+        >
+          Edit Widget Name
+        </button>
+        <button
+          type="button"
+          className="add-widget"
+          onClick={() => actions.deleteWidgetName('abc')}
+        >
+          Delete Widget Name
+        </button>
+      </section>
       <section>
         <h3>Show Message</h3>
         <button

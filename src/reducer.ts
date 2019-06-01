@@ -3,8 +3,8 @@ import { StateInterface } from './state'
 
 function replaceName(state: StateInterface, action: any) {
   const newArray = [...state.widgetNames]
-  const indexOfWidgetName = state.widgetNames.indexOf(action.previousName)
-  newArray[indexOfWidgetName] = action.newName
+  const indexOfWidgetName = state.widgetNames.indexOf(action.widgetName)
+  newArray[indexOfWidgetName] = action.newWidgetName
   return newArray
 }
 function deleteName(state: StateInterface, action: any) {

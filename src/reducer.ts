@@ -9,22 +9,28 @@ const actionTypes = {
 }
 export { actionTypes }
 
-function replaceName(state: StateInterface, action: any) {
+export interface Iaction {
+  type: string
+  widgetName: string
+  newWidgetName?: string
+}
+
+function replaceName(state: StateInterface, action: Iaction): string[] {
   const newArray = [...state.widgetNames]
   const indexOfWidgetName = state.widgetNames.indexOf(action.widgetName)
   newArray[indexOfWidgetName] = action.newWidgetName
   return newArray
 }
-function deleteName(state: StateInterface, action: any) {
+function deleteName(state: StateInterface, action: Iaction): string[] {
   const newArray = [...state.widgetNames]
   newArray.splice(action.name, 1)
   return newArray
 }
-function reducer(state: StateInterface, action: any) {
+function reducer(state: StateInterface, action: Iaction): void {
   switch (action.type) {
     case actionTypes.ADD_WIDGET_NAME:
       return Object.assign({}, state, {
-        widgetNames: [action.name, ...state.widgetNames],
+        widgetNames: [action.widgetName, ...state.widgetNames],
       })
     case actionTypes.EDIT_WIDGET_NAME:
       return Object.assign(

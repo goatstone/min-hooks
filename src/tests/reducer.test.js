@@ -1,7 +1,8 @@
 import reducer from '../reducer'
-import { actionTypes } from '../reducer'
+import { actionTypes, Iaction } from '../reducer'
+import { StateInerface } from '../state'
 
-let preState
+let preState: StateInerface
 
 describe('reducer', () => {
   beforeEach(() => {
@@ -13,13 +14,11 @@ describe('reducer', () => {
   })
   it('should return a state with string added', () => {
     const expectedString = 'abc'
-    const newState = reducer(
-      preState,
-      {
-        type: actionTypes.ADD_WIDGET_NAME,
-        name: expectedString,
-      },
-    )
+    const action: Iaction = {
+      type: actionTypes.ADD_WIDGET_NAME,
+      widgetName: expectedString,
+    }
+    const newState = reducer(preState, action)
     expect(newState.widgetNames.length).toBe(1)
     expect(newState.widgetNames[newState.widgetNames.length - 1])
       .toBe(expectedString)
@@ -28,12 +27,12 @@ describe('reducer', () => {
     const widgetName = 'abc'
     const newWidgetName = 'xyz'
     preState.widgetNames.push(widgetName)
-    const newState = reducer(preState,
-      {
-        type: actionTypes.EDIT_WIDGET_NAME,
-        widgetName,
-        newWidgetName,
-      })
+    const action: Iaction = {
+      type: actionTypes.EDIT_WIDGET_NAME,
+      widgetName,
+      newWidgetName,
+    }
+    const newState = reducer(preState, action)
     expect(newState).toBeTruthy()
     expect(newState.widgetNames[newState.widgetNames.length - 1])
       .toBe(newWidgetName)
@@ -41,24 +40,27 @@ describe('reducer', () => {
   it('should delete a given name', () => {
     const nameDeleted = 'abc'
     preState.widgetNames.push(nameDeleted)
-    const newState = reducer(preState,
-      {
-        type: actionTypes.DELETE_WIDGET_NAME,
-        name: nameDeleted,
-      })
+    const action: Iaction = {
+      type: actionTypes.DELETE_WIDGET_NAME,
+      widgetName: nameDeleted,
+    }
+    const newState = reducer(preState, action)
     expect(newState.widgetNames.length).toBe(preState.widgetNames.length - 1)
     expect(newState.widgetNames.includes(nameDeleted)).toBe(false)
   })
   it('should return a state with the isShowingMessage value true', () => {
     preState.isShowingMessage = false
+    const action: Iaction =
+      { type: actionTypes.SHOW_MESSAGE }
     const newState = reducer(preState,
-      { type: actionTypes.SHOW_MESSAGE })
+      action)
     expect(newState.isShowingMessage).toBe(true)
   })
   it('should return a state with the isShowingMessage value false', () => {
     preState.isShowingMessage = true
-    const newState = reducer(preState,
+    const action: Iaction =
       { type: actionTypes.HIDE_MESSAGE })
+    const newState = reducer(preState, action)
     expect(newState.isShowingMessage).toBe(false)
   })
   it('should throw an error when an incorrect action type is used', () => {

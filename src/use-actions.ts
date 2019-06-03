@@ -2,7 +2,8 @@ import { StateInterface } from './state'
 import { actionTypes } from './reducer'
 import { ActionsInterface } from './action'
 
-function useAction(state: StateInterface, dispatch: (arg0: object) => void): ActionsInterface {
+function useAction(state: StateInterface, dispatch: (arg0: object) => void)
+  : ActionsInterface {
   function addWidgetName(widgetName: string): void {
     if (state.widgetNames.includes(widgetName)) {
       dispatch({

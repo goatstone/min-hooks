@@ -11,7 +11,7 @@ const StoreProvider: React.FC = ({ children }) => {
   const actions = useActions(state, dispatch)
 
   return (
-    <StoreContext.Provider value={{ state, dispatch, actions }}>
+    <StoreContext.Provider value={{ state, actions }}>
       {children}
     </StoreContext.Provider>
   )

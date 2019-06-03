@@ -1,19 +1,17 @@
 import React from 'react'
 import './MinHooks.css'
 import { StoreContext } from './StoreContext'
-import { actionTypes } from './reducer'
 import { StateInterface } from './state'
 
 interface StoreContextInterface {
-  state: StateInterface,
-  dispatch: any,
-  actions: any,
+  readonly state: StateInterface
+  readonly actions: any
 }
 const MinHooks: React.FC = () => {
   // local state
   const [localState, localSetState] = React.useState('abc')
   // global state
-  const { state, dispatch, actions }: StoreContextInterface = React.useContext(StoreContext)
+  const { state, actions }: StoreContextInterface = React.useContext(StoreContext)
 
   return (
     <section className="min-hooks">
@@ -61,16 +59,14 @@ const MinHooks: React.FC = () => {
         <button
           type="button"
           className="global-state"
-          onClick={() => dispatch({ type: actionTypes.SHOW_MESSAGE })
-          }
+          onClick={actions.showMessage}
         >
           set to true
         </button>
         <button
           type="button"
           className="global-state-2"
-          onClick={() => dispatch({ type: actionTypes.HIDE_MESSAGE })
-          }
+          onClick={actions.hideMessage}
         >
           set to false
         </button>

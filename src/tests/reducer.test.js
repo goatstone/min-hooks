@@ -59,7 +59,7 @@ describe('reducer', () => {
   it('should return a state with the isShowingMessage value false', () => {
     preState.isShowingMessage = true
     const action: Iaction =
-      { type: actionTypes.HIDE_MESSAGE })
+      { type: actionTypes.HIDE_MESSAGE }
     const newState = reducer(preState, action)
     expect(newState.isShowingMessage).toBe(false)
   })

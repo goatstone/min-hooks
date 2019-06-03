@@ -1,4 +1,4 @@
-import { actionTypes } from '../action'
+import { actionTypes } from '../reducer'
 
 describe('actionTypes', () => {
   it('should return and object', () => {

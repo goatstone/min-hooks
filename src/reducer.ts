@@ -1,5 +1,13 @@
-import { actionTypes } from './action'
 import { StateInterface } from './state'
+
+const actionTypes = {
+  ADD_WIDGET_NAME: 'ADD_WIDGET_NAME',
+  EDIT_WIDGET_NAME: 'EDIT_WIDGET_NAME',
+  DELETE_WIDGET_NAME: 'DELETE_WIDGET_NAME',
+  SHOW_MESSAGE: 'SHOW_MESSAGE',
+  HIDE_MESSAGE: 'HIDE_MESSAGE',
+}
+export { actionTypes }
 
 function replaceName(state: StateInterface, action: any) {
   const newArray = [...state.widgetNames]

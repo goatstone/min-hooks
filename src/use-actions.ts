@@ -1,5 +1,6 @@
 import { StateInterface } from './state'
-import { ActionsInterface, actionTypes } from './action'
+import { actionTypes } from './reducer'
+import { ActionsInterface } from './action'
 
 function useAction(state: StateInterface, dispatch: (arg0: object) => void): ActionsInterface {
   function addWidgetName(widgetName: string): void {

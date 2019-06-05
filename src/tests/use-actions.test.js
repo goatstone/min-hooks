@@ -34,9 +34,29 @@ describe('actions', () => {
     it('should call dispatch with a specific object', () => {
       const expectedDispatchArg = {
         type: actionTypes.ADD_WIDGET_NAME,
-        name: 'xxx'
+        widgetName: 'xxx'
       }
-      actions.addWidgetName(expectedDispatchArg.name)
+      actions.addWidgetName(expectedDispatchArg.widgetName)
+      expect(dispatch).toBeCalledWith(expectedDispatchArg)
+    })
+  })
+  describe('editWidgeName', () => {
+    it('should call dispatch with a specific object', () => {
+      const expectedDispatchArg = {
+        type: actionTypes.EDIT_WIDGET_NAME,
+        widgetName: 'xxx'
+      }
+      actions.editWidgetName(expectedDispatchArg.widgetName)
+      expect(dispatch).toBeCalledWith(expectedDispatchArg)
+    })
+  })
+  describe('deleteWidgeName', () => {
+    it('should call dispatch with a specific object', () => {
+      const expectedDispatchArg = {
+        type: actionTypes.DELETE_WIDGET_NAME,
+        widgetName: 'xxx'
+      }
+      actions.deleteWidgetName(expectedDispatchArg.widgetName)
       expect(dispatch).toBeCalledWith(expectedDispatchArg)
     })
   })

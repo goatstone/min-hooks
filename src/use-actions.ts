@@ -13,7 +13,7 @@ function useAction(state: StateInterface, dispatch: (arg0: object) => void)
     } else {
       dispatch({
         type: actionTypes.ADD_WIDGET_NAME,
-        name: widgetName,
+        widgetName,
       })
     }
   }

@@ -60,4 +60,23 @@ describe('actions', () => {
       expect(dispatch).toBeCalledWith(expectedDispatchArg)
     })
   })
+  describe('showMessage', () => {
+    it('should call dispatch with a specific object', () => {
+      const expectedDispatchArg = {
+        type: actionTypes.SHOW_MESSAGE,
+        message: 'xxx'
+      }
+      actions.showMessage(expectedDispatchArg.message)
+      expect(dispatch).toBeCalledWith(expectedDispatchArg)
+    })
+  })
+  describe('hideMessage', () => {
+    it ('should call dispatch with a certain object', () => {
+      const expectedDispatchArg = {
+        type: actionTypes.HIDE_MESSAGE,
+      }
+      actions.hideMessage()
+      expect(dispatch).toBeCalledWith(expectedDispatchArg)
+    })
+  })
 })

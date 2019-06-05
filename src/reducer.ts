@@ -23,7 +23,8 @@ function replaceName(state: StateInterface, action: Iaction): string[] {
 }
 function deleteName(state: StateInterface, action: Iaction): string[] {
   const newArray = [...state.widgetNames]
-  newArray.splice(action.name, 1)
+  const indexOfWidgetName = state.widgetNames.indexOf(action.widgetName)
+  if (indexOfWidgetName !== -1) newArray.splice(indexOfWidgetName, 1)
   return newArray
 }
 function reducer(state: StateInterface, action: Iaction): void {

@@ -23,7 +23,7 @@ const MinHooks: React.FC = () => {
         <ul>
           {
             state.widgetNames.map(el => (
-              <li key={el}>
+              <li key={`${el}${Math.random()}`}>
                 {el}
               </li>
             ))

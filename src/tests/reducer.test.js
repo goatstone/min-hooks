@@ -39,13 +39,15 @@ describe('reducer', () => {
   })
   it('should delete a given name', () => {
     const nameDeleted = 'abc'
-    preState.widgetNames.push(nameDeleted)
+    const preStateA = {
+      widgetNames: ['x', nameDeleted, 'aaaaa'],
+    }
     const action: Iaction = {
       type: actionTypes.DELETE_WIDGET_NAME,
       widgetName: nameDeleted,
     }
-    const newState = reducer(preState, action)
-    expect(newState.widgetNames.length).toBe(preState.widgetNames.length - 1)
+    const newState = reducer(preStateA, action)
+    expect(newState.widgetNames.length).toBe(preStateA.widgetNames.length - 1)
     expect(newState.widgetNames.includes(nameDeleted)).toBe(false)
   })
   it('should return a state with the isShowingMessage value true', () => {

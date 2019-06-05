@@ -31,12 +31,29 @@ describe('actions', () => {
     actions = useActions(initState, dispatch)
   })
   describe('addWidgeName', () => {
-    it('should call dispatch with a specific object', () => {
+    it('should call dispatch with a specific object if argument value does not exist', () => {
+      const iS = {
+        widgetNames: []
+      }
+      const actionsA = useActions(initState, dispatch)
       const expectedDispatchArg = {
         type: actionTypes.ADD_WIDGET_NAME,
         widgetName: 'xxx'
       }
-      actions.addWidgetName(expectedDispatchArg.widgetName)
+      actionsA.addWidgetName(expectedDispatchArg.widgetName)
+      expect(dispatch).toBeCalledWith(expectedDispatchArg)
+    })
+    it('should call dispatch with a specific object if argument value does exist', () => {
+      const widgetname = 'xxx'
+      const testState = {
+        widgetNames: [widgetname]
+      }
+      const actions = useActions(testState, dispatch)
+      const expectedDispatchArg = {
+        type: actionTypes.SHOW_MESSAGE,
+        message: 'Name exists in list.'
+      }
+      actions.addWidgetName(widgetname)
       expect(dispatch).toBeCalledWith(expectedDispatchArg)
     })
   })
@@ -71,7 +88,7 @@ describe('actions', () => {
     })
   })
   describe('hideMessage', () => {
-    it ('should call dispatch with a certain object', () => {
+    it('should call dispatch with a certain object', () => {
       const expectedDispatchArg = {
         type: actionTypes.HIDE_MESSAGE,
       }

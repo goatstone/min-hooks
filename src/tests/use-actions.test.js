@@ -3,6 +3,7 @@ import useActions from '../use-actions'
 import { ActionsInterface } from '../action'
 import { StateInterface } from '../state'
 import reducer from '../reducer'
+import { actionTypes } from '../reducer'
 
 let actions: ActionsInterface
 let initState: StateInterface = {
@@ -10,10 +11,10 @@ let initState: StateInterface = {
   lastUpdate: '',
   isShowingMessage: false,
 }
-// mock goes here
-let dispatch = () => { }
+
 describe('useActions', () => {
   beforeEach(() => {
+    const dispatch = jest.fn()
     actions = useActions(initState, dispatch)
   })
   it('should be a function', () => {
@@ -24,14 +25,19 @@ describe('useActions', () => {
   })
 })
 describe('actions', () => {
+  let dispatch
   beforeEach(() => {
+    dispatch = jest.fn()
     actions = useActions(initState, dispatch)
   })
   describe('addWidgeName', () => {
     it('should call dispatch with a specific object', () => {
-      actions.addWidgetName('xxx')
+      const expectedDispatchArg = {
+        type: actionTypes.ADD_WIDGET_NAME,
+        name: 'xxx'
+      }
+      actions.addWidgetName(expectedDispatchArg.name)
+      expect(dispatch).toBeCalledWith(expectedDispatchArg)
     })
-    // check mock here
-    expect(2).toBe(2)
   })
 })

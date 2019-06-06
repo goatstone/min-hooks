@@ -7,6 +7,53 @@ interface StoreContextInterface {
   readonly state: StateInterface
   readonly actions: any
 }
+/*
+  <Widgets>
+    <WidgetHeader />
+    <WidgetManager>
+      <h3>header</h3>
+      <WidgetList>
+    </WidgetManager>
+    <WidgetControl>
+      <h3>header</h3>
+      <WidgetAdd />
+      <WidgetEdit />
+    </WidgetControl>
+    <WidgetMessage>
+  </Widgets>
+*/
+const WidgetHeader: React.FC = () => (
+  <section>
+    <header>
+      Widgets
+    </header>
+  </section>
+)
+const Widgets: React.FC = ({ children } : any) => (
+  <section className="min-hooks">
+    {children}
+  </section>
+)
+const WidgetListManage: React.FC = ({ children } : any) => (
+  <section className="widget-manage">
+    {children}
+  </section>
+)
+const WidgetControl: React.FC = ({ children } : any) => (
+  <section className="widget-control">
+    {children}
+  </section>
+)
+const Message: React.FC = ({ children } : any) => (
+  <section className="message">
+    {children}
+  </section>
+)
+const LocalState: React.FC = ({ children } : any) => (
+  <section className="local-state">
+    {children}
+  </section>
+)
 const MinHooks: React.FC = () => {
   // local state
   const [localState, localSetState] = React.useState('abc')
@@ -15,46 +62,48 @@ const MinHooks: React.FC = () => {
 
   return (
     <section className="min-hooks">
-      <header>
-        Widgets
-      </header>
-      <section>
-        <h3>Widget Names</h3>
-        <ul>
-          {
-            state.widgetNames.map(el => (
-              <li key={`${el}${Math.random()}`}>
-                {el}
-              </li>
-            ))
-          }
-        </ul>
-      </section>
-      <section className="actions">
-        <h3>Actions</h3>
-        <button
-          type="button"
-          className="add-widget"
-          onClick={() => actions.addWidgetName('abc')}
-        >
-          Add Widget Name
-        </button>
-        <button
-          type="button"
-          className="add-widget"
-          onClick={() => actions.editWidgetName('abc', 'ss')}
-        >
-          Edit Widget Name
-        </button>
-        <button
-          type="button"
-          className="add-widget"
-          onClick={() => actions.deleteWidgetName('abc')}
-        >
-          Delete Widget Name
-        </button>
-      </section>
-      <section>
+      <Widgets>
+        <WidgetHeader />
+        <WidgetListManage>
+          <h3>
+            Widget Name List
+          </h3>
+          <ul>
+            {
+              state.widgetNames.map(el => (
+                <li key={`${el}${Math.random()}`}>
+                  {el}
+                </li>
+              ))
+            }
+          </ul>
+        </WidgetListManage>
+        <WidgetControl>
+          <h3>Actions</h3>
+          <button
+            type="button"
+            className="add-widget"
+            onClick={() => actions.addWidgetName('abc')}
+          >
+            Add Widget Name
+          </button>
+          <button
+            type="button"
+            className="add-widget"
+            onClick={() => actions.editWidgetName('abc', 'ss')}
+          >
+            Edit Widget Name
+          </button>
+          <button
+            type="button"
+            className="add-widget"
+            onClick={() => actions.deleteWidgetName('abc')}
+          >
+            Delete Widget Name
+          </button>
+        </WidgetControl>
+      </Widgets>
+      <Message>
         <h3>Show Message</h3>
         <button
           type="button"
@@ -73,8 +122,8 @@ const MinHooks: React.FC = () => {
         <article className="global-state">
           {state.isShowingMessage ? 'T' : 'F'}
         </article>
-      </section>
-      <section>
+      </Message>
+      <LocalState>
         <h3>Local State</h3>
         <button
           type="button"
@@ -87,7 +136,7 @@ const MinHooks: React.FC = () => {
         <article className="local-state">
           {localState}
         </article>
-      </section>
+      </LocalState>
     </section>
   )
 }

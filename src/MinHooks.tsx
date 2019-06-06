@@ -1,7 +1,6 @@
 import React from 'react'
 import './MinHooks.css'
-import { StoreContext } from './StoreContext'
-import { StateInterface } from './state'
+import { StoreContext, StoreContextInterface } from './StoreContext'
 import LocalState from './components/LocalState'
 import Message from './components/Message'
 import WidgetControl from './components/WidgetControl'
@@ -9,10 +8,7 @@ import WidgetListManage from './components/WidgetListManage'
 import WidgetHeader from './components/WidgetHeader'
 import Widgets from './components/Widgets'
 
-interface StoreContextInterface {
-  readonly state: StateInterface
-  readonly actions: any
-}
+
 /*
   <Widgets>
     <WidgetHeader />
@@ -28,6 +24,7 @@ interface StoreContextInterface {
     <WidgetMessage>
   </Widgets>
 */
+
 const MinHooks: React.FC = () => {
   // local state
   const [localState, localSetState] = React.useState('abc')

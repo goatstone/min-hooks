@@ -1,9 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import defaultState from './state'
+import defaultState, { StateInterface } from './state'
 import reducer from './reducer'
 import useActions from './use-actions'
 import { ActionsInterface } from './action'
+
+export interface StoreContextInterface {
+  readonly state: StateInterface
+  readonly actions: any
+}
 
 const StoreContext = React.createContext<any>(defaultState)
 

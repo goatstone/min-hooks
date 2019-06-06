@@ -2,6 +2,12 @@ import React from 'react'
 import './MinHooks.css'
 import { StoreContext } from './StoreContext'
 import { StateInterface } from './state'
+import LocalState from './components/LocalState'
+import Message from './components/Message'
+import WidgetControl from './components/WidgetControl'
+import WidgetListManage from './components/WidgetListManage'
+import WidgetHeader from './components/WidgetHeader'
+import Widgets from './components/Widgets'
 
 interface StoreContextInterface {
   readonly state: StateInterface
@@ -22,38 +28,6 @@ interface StoreContextInterface {
     <WidgetMessage>
   </Widgets>
 */
-const WidgetHeader: React.FC = () => (
-  <section>
-    <header>
-      Widgets
-    </header>
-  </section>
-)
-const Widgets: React.FC = ({ children } : any) => (
-  <section className="min-hooks">
-    {children}
-  </section>
-)
-const WidgetListManage: React.FC = ({ children } : any) => (
-  <section className="widget-manage">
-    {children}
-  </section>
-)
-const WidgetControl: React.FC = ({ children } : any) => (
-  <section className="widget-control">
-    {children}
-  </section>
-)
-const Message: React.FC = ({ children } : any) => (
-  <section className="message">
-    {children}
-  </section>
-)
-const LocalState: React.FC = ({ children } : any) => (
-  <section className="local-state">
-    {children}
-  </section>
-)
 const MinHooks: React.FC = () => {
   // local state
   const [localState, localSetState] = React.useState('abc')

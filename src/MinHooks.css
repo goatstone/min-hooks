@@ -1,25 +1,8 @@
-.min-hooks {
-  text-align: center;
-  background: gray;
-}
-.min-hooks header {
-  font-size: 2em;
-  background: lightcyan;
-}
-section section {
+section.min-hooks {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
-  background: lightblue;
-  margin: 6px 0;
+  align-items: flex-start;
+  flex-wrap: nowrap;
 }
-section section h3 {
-  width: 100%;
-  background: lightgray;
-}
-.actions button {
-  max-width: 100px;
-}
+ 

@@ -1,11 +1,9 @@
 import React from 'react'
 
 const WidgetHeader: React.FC = () => (
-  <section>
-    <header>
-      Widgets
-    </header>
-  </section>
+  <header>
+    <h3>Widgets</h3>
+  </header>
 )
 
 export default WidgetHeader

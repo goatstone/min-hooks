@@ -1,0 +1,12 @@
+.widget-add-control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: blue;
+  border-radius: 0.5em;
+  padding: 0.5em;
+}
+.widget-add-control > *{
+  margin: 0.3em;
+  padding: 0.3em;
+}

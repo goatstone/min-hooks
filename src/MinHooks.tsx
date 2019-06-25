@@ -27,13 +27,12 @@ const MinHooks: React.FC = () => {
     <section className="min-hooks">
       <Widgets>
         <WidgetHeader />
+        <WidgetAdd />
         <WidgetListManage>
           <h3>Widget Name List</h3>
           <WidgetList />
         </WidgetListManage>
         <WidgetControl>
-          <h3>Widget Control</h3>
-          <WidgetAdd />
           <WidgetEdit />
           <button
             type="button"

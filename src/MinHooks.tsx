@@ -41,8 +41,8 @@ const MinHooks: React.FC = () => {
           </button>
         </WidgetControl>
       </Widgets>
-      <MessageDisplay />
       <MessageControl />
+      <MessageDisplay />
     </section>
   )
 }

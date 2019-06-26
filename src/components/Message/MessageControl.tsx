@@ -1,30 +1,28 @@
 import React from 'react'
 import { StoreContext, StoreContextInterface } from '../../StoreContext'
+import './MessageControl.css'
 
 const MessageControl: React.FC = () => {
   const { state, actions }: StoreContextInterface = React.useContext(StoreContext)
 
   return (
-    <div>
-      <article className="global-state">
-        {state.isShowingMessage ? 'T' : 'F'}
-      </article>
+    <article className="message-control">
+      <h4>Display Message</h4>
       <button
         type="button"
-        className="global-state"
         onClick={actions.showMessage}
+        disabled={state.isShowingMessage}
       >
-        set to true
-        {state.lastUpdate}
+        Show
       </button>
       <button
         type="button"
-        className="global-state-2"
         onClick={actions.hideMessage}
+        disabled={!state.isShowingMessage}
       >
-        set to false
+        Hide
       </button>
-    </div>
+    </article>
   )
 }
 

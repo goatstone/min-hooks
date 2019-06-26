@@ -1,9 +1,9 @@
 import React from 'react'
 
 const WidgetListManage: React.FC = ({ children } : any) => (
-  <section className="widget-manage">
+  <article className="widget-manage">
     {children}
-  </section>
+  </article>
 )
 
 export default WidgetListManage

@@ -12,6 +12,7 @@ const MessageControl: React.FC = () => {
         type="button"
         onClick={actions.showMessage}
         disabled={state.isShowingMessage}
+        className="show-message"
       >
         Show
       </button>
@@ -19,6 +20,7 @@ const MessageControl: React.FC = () => {
         type="button"
         onClick={actions.hideMessage}
         disabled={!state.isShowingMessage}
+        className="hide-message"
       >
         Hide
       </button>

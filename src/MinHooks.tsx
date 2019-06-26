@@ -8,7 +8,7 @@ import {
   WidgetControl,
   WidgetListManage,
   WidgetHeader,
-  Widgets,
+  // Widgets,
   MessageDisplay,
   MessageControl,
   WidgetList,
@@ -22,25 +22,23 @@ const MinHooks: React.FC = () => {
 
   return (
     <section className="min-hooks">
-      <Widgets>
-        <WidgetHeader />
-        <WidgetAdd />
-        <WidgetListManage>
-          <h3>Widget Name List</h3>
-          {state.lastUpdate}
-          <WidgetList />
-        </WidgetListManage>
-        <WidgetControl>
-          <WidgetEdit />
-          <button
-            type="button"
-            className="add-widget"
-            onClick={() => actions.deleteWidgetName('abc')}
-          >
-            Delete Widget Name
-          </button>
-        </WidgetControl>
-      </Widgets>
+      <WidgetHeader />
+      <WidgetAdd />
+      <WidgetListManage>
+        <h3>Widget Name List</h3>
+        {state.lastUpdate}
+        <WidgetList />
+      </WidgetListManage>
+      <WidgetControl>
+        <WidgetEdit />
+        <button
+          type="button"
+          className="add-widget"
+          onClick={() => actions.deleteWidgetName('abc')}
+        >
+          Delete Widget Name
+        </button>
+      </WidgetControl>
       <MessageControl />
       <MessageDisplay />
     </section>

@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Widgets: React.FC = ({ children } : any) => (
-  <section className="min-hooks">
+const Widgets: React.FC = ({ children }: any) => (
+  <article>
     {children}
-  </section>
+  </article>
 )
 
 export default Widgets

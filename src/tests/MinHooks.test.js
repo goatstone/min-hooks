@@ -29,31 +29,15 @@ describe('<MinHooks />', () => {
     )
   })
   it('should have a particular shape', () => {
-    expect(element.find('header').length).toBe(1)
-  })
-  it('should have the value set in initState', () => {
-    expect(element.find('article.global-state').text()).toBe('F')
-  })
-  it('should respond to local button ', () => {
-    expect(element.find('article.local-state').text()).toBe('abc')
-    element.find('button.local-state').simulate('click')
-    expect(element.find('article.local-state').text()).toBe('xxx')
-  })
-  it('should respond to a global button', () => {
-    expect(element.find('article.global-state').text()).toBe('F')
-    expect(element.find('button.global-state').length).toBe(1)
-    element.find('button.global-state').simulate('click')
-    expect(element.find('article.global-state').text()).toBe('T')
+    expect(element.find('section.min-hooks header').length).toBe(1)
+    expect(element.find('section.min-hooks article').length).toBe(4)
   })
   it('should respond to a global button show false', () => {
-    jest.mock('../state', () => ({
-      widgetNameList: [],
-      lastUpdated: '',
-      isShowingMessage: true,
-    }))
-    expect(element.find('article.global-state').text()).toBe('T')
-    expect(element.find('button.global-state-2').length).toBe(1)
-    element.find('button.global-state-2').simulate('click')
-    expect(element.find('article.global-state').text()).toBe('F')
+    expect(element.find('article.message-display'))
+    expect(element.find('article.message-display').text()).toBe('')
+
+    element.find('article.message-control button.show-message').simulate('click')
+
+    expect(element.find('article.message-display').text()).toBe('message')
   })
 })

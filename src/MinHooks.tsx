@@ -6,11 +6,11 @@ import {
 } from './StoreContext'
 import {
   LocalState,
-  Message,
   WidgetControl,
   WidgetListManage,
   WidgetHeader,
   Widgets,
+  MessageDisplay,
   MessageControl,
   WidgetList,
   WidgetEdit,
@@ -43,13 +43,12 @@ const MinHooks: React.FC = () => {
           </button>
         </WidgetControl>
       </Widgets>
-      <Message>
-        <h3>Show Message</h3>
-        <MessageControl />
+      <MessageDisplay />
+      <MessageControl>
         <article className="global-state">
           {state.isShowingMessage ? 'T' : 'F'}
         </article>
-      </Message>
+      </MessageControl>
       <LocalState>
         <h3>Local State</h3>
         <button

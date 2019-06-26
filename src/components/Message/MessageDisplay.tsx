@@ -6,7 +6,7 @@ const MessageDisplay: React.FC = () => {
   const { state }: StoreContextInterface = React.useContext(StoreContext)
   return (
     <article className="message-display">
-      {state.isShowingMessage ? <p>message</p> : ''}
+      {state.isShowingMessage ? <p>{state.message}</p> : ''}
     </article>
   )
 }

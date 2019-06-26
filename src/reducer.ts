@@ -6,6 +6,7 @@ const actionTypes = {
   DELETE_WIDGET_NAME: 'DELETE_WIDGET_NAME',
   SHOW_MESSAGE: 'SHOW_MESSAGE',
   HIDE_MESSAGE: 'HIDE_MESSAGE',
+  SET_MESSAGE: 'SET_MESSAGE',
 }
 export { actionTypes }
 
@@ -13,6 +14,7 @@ export interface Iaction {
   type: string
   widgetName: string
   newWidgetName?: string
+  message?: string
 }
 
 function replaceName(state: StateInterface, action: Iaction): string[] {
@@ -45,6 +47,8 @@ function reducer(state: StateInterface, action: Iaction): void {
       return Object.assign({}, state, { isShowingMessage: true })
     case actionTypes.HIDE_MESSAGE:
       return Object.assign({}, state, { isShowingMessage: false })
+    case actionTypes.SET_MESSAGE:
+      return Object.assign({}, state, { message: action.message })
     default:
       throw new Error(`action ${action.type} type does not exist`)
   }

@@ -6,3 +6,8 @@ article.message-control {
     padding: 1em;
     background: lightgray;
 }
+article.message-control fieldset:nth-child(1){
+    background: red;
+    display: flex;
+    flex-direction: column;
+}

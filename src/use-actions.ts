@@ -39,12 +39,16 @@ function useAction(state: StateInterface, dispatch: (arg0: object) => void)
   function hideMessage() {
     dispatch({ type: actionTypes.HIDE_MESSAGE })
   }
+  function setMessage(message: string) {
+    dispatch({ type: actionTypes.SET_MESSAGE, message })
+  }
   return {
     addWidgetName,
     editWidgetName,
     deleteWidgetName,
     showMessage,
     hideMessage,
+    setMessage,
   }
 }
 

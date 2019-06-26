@@ -9,42 +9,49 @@ const MessageControl: React.FC = () => {
   const setNameValue = ({ target }: any) => {
     localSetState(target.value)
   }
-  const setMessage = (message: string) => {
-    actions.setMessage(message)
+  const setMessage = () => {
+    actions.setMessage(localState)
     localSetState('')
   }
 
   return (
     <article className="message-control">
       <h4>Display Message</h4>
-      <input
-        value={localState}
-        onChange={setNameValue}
-      />
-      <button
-        type="button"
-        onClick={e => setMessage(e.target.value)}
-        disabled={false}
-        className="set-message"
-      >
-        Set
-      </button>
-      <button
-        type="button"
-        onClick={actions.showMessage}
-        disabled={state.isShowingMessage}
-        className="show-message"
-      >
-        Show
-      </button>
-      <button
-        type="button"
-        onClick={actions.hideMessage}
-        disabled={!state.isShowingMessage}
-        className="hide-message"
-      >
-        Hide
-      </button>
+      <fieldset>
+        <label>
+          Set Message
+          <input
+            value={localState}
+            onChange={setNameValue}
+          />
+        </label>
+        <button
+          type="button"
+          onClick={setMessage}
+          disabled={localState.length === 0}
+          className="set-message"
+        >
+          Set
+        </button>
+      </fieldset>
+      <fieldset>
+        <button
+          type="button"
+          onClick={actions.showMessage}
+          disabled={state.isShowingMessage}
+          className="show-message"
+        >
+          Show
+        </button>
+        <button
+          type="button"
+          onClick={actions.hideMessage}
+          disabled={!state.isShowingMessage}
+          className="hide-message"
+        >
+          Hide
+        </button>
+      </fieldset>
     </article>
   )
 }

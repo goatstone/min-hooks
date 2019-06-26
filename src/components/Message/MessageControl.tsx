@@ -16,8 +16,8 @@ const MessageControl: React.FC = () => {
 
   return (
     <article className="message-control">
-      <h4>Display Message</h4>
-      <fieldset>
+      <h4>Message Control</h4>
+      <fieldset className="message-control-layout-a">
         <label>
           Set Message
           <input

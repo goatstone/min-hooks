@@ -6,8 +6,13 @@ article.message-control {
     padding: 1em;
     background: lightgray;
 }
-article.message-control fieldset:nth-child(1){
-    background: red;
+article.message-control .message-control-layout-a {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+}
+article.message-control .message-control-layout-a label{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }

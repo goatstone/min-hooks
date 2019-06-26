@@ -2,7 +2,21 @@ section.min-hooks {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: space-between;
   flex-wrap: nowrap;
 }
- 
+ .widgets-container {
+  display: flex;
+  flex-direction: column;
+}
+div.min-hooks-body{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 900px;
+}
+article.message-display {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}

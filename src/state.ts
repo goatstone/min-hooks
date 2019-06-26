@@ -6,7 +6,7 @@ export interface StateInterface {
 }
 
 const defaultState = {
-  widgetNames: [],
+  widgetNames: ['a', 'b', 'c'],
   lastUpdate: '',
   isShowingMessage: false,
   message: '',

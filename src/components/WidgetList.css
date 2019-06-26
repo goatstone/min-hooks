@@ -1,0 +1,7 @@
+article.widget-list {
+}
+article.widget-list .widget-list-grid{
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    background: whitesmoke;
+}

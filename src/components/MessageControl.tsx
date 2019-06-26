@@ -6,6 +6,9 @@ const MessageControl: React.FC = () => {
 
   return (
     <div>
+      <article className="global-state">
+        {state.isShowingMessage ? 'T' : 'F'}
+      </article>
       <button
         type="button"
         className="global-state"

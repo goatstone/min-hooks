@@ -1,4 +1,3 @@
-import LocalState from './LocalState'
 import WidgetControl from './WidgetControl'
 import WidgetListManage from './WidgetListManage'
 import WidgetHeader from './WidgetHeader'
@@ -10,7 +9,6 @@ import WidgetEdit from './WidgetEdit'
 import WidgetAdd from './WidgetAdd'
 
 export {
-  LocalState,
   WidgetControl,
   WidgetListManage,
   WidgetHeader,

@@ -1,8 +1,6 @@
-import React from 'react'
 import useActions from '../use-actions'
 import { ActionsInterface } from '../action'
 import { StateInterface } from '../state'
-import reducer from '../reducer'
 import { actionTypes } from '../reducer'
 
 let actions: ActionsInterface
@@ -65,10 +63,11 @@ describe('actions', () => {
     it('should call dispatch with a specific object', () => {
       const expectedDispatchArg = {
         type: actionTypes.EDIT_WIDGET_NAME,
-        widgetName: 'xxx'
+        widgetName: 'abc',
+        newWidgetName: 'abcd'
       }
-      actions.editWidgetName('abc', expectedDispatchArg.widgetName)
-      expect(dispatch).toBeCalledWith(expectedDispatchArg)
+      actions.editWidgetName('abc', 'abcd')
+        expect(dispatch).toBeCalledWith(expectedDispatchArg)
     })
   })
   describe('deleteWidgeName', () => {

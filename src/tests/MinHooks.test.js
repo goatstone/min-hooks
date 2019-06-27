@@ -18,7 +18,7 @@ describe('<MinHooks />', () => {
       widgetNames: [],
       lastUpdated: '',
       isShowingMessage: true,
-      message: 'abc'
+      message: 'abc',
     }))
     /* eslint prefer-destructuring: 0 */
     StoreProvider = require('../StoreContext').StoreProvider
@@ -34,7 +34,7 @@ describe('<MinHooks />', () => {
     expect(element.find('article.message-display'))
     expect(element.find('article.message-control'))
   })
-  it('should contain information from the state', () => {    
+  it('should contain information from the state', () => {
     expect(element.find('article.message-control input').length).toBe(1)
     expect(element.find('article.message-display').text()).toBe('abc')
   })

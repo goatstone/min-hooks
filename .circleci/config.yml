@@ -37,3 +37,5 @@ jobs:
       - run: npm run test
       # show coverage
       - run: node_modules/.bin/jest --coverage src/
+      # eslint
+      - run: node_modules/.bin/eslint src/

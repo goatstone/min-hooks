@@ -1,8 +1,8 @@
 import reducer from '../reducer'
-import { actionTypes, Iaction } from '../reducer'
-import { StateInerface } from '../state'
+import { actionTypes, UnionInterface } from '../reducer'
+import { StateInterface } from '../state'
 
-let preState: StateInerface
+let preState: StateInterface
 
 describe('reducer', () => {
   beforeEach(() => {
@@ -10,11 +10,12 @@ describe('reducer', () => {
       widgetNames: [],
       lastUpdate: '',
       isShowingMessage: false,
+      message: 'abc'
     }
   })
   it('should return a state with string added', () => {
     const expectedString = 'abc'
-    const action: Iaction = {
+    const action: UnionInterface = {
       type: actionTypes.ADD_WIDGET_NAME,
       widgetName: expectedString,
     }
@@ -27,7 +28,7 @@ describe('reducer', () => {
     const widgetName = 'abc'
     const newWidgetName = 'xyz'
     preState.widgetNames.push(widgetName)
-    const action: Iaction = {
+    const action: UnionInterface = {
       type: actionTypes.EDIT_WIDGET_NAME,
       widgetName,
       newWidgetName,
@@ -39,10 +40,13 @@ describe('reducer', () => {
   })
   it('should delete a given name', () => {
     const nameDeleted = 'abc'
-    const preStateA = {
+    const preStateA: StateInterface = {
       widgetNames: ['x', nameDeleted, 'aaaaa'],
+      lastUpdate: new Date().toDateString(),
+      isShowingMessage: false,
+      message: ''
     }
-    const action: Iaction = {
+    const action: UnionInterface = {
       type: actionTypes.DELETE_WIDGET_NAME,
       widgetName: nameDeleted,
     }
@@ -52,10 +56,13 @@ describe('reducer', () => {
   })
   it('should do nothing if the name to delete does not exist', () => {
     const nameDeleted = 'abc'
-    const preStateA = {
+    const preStateA: StateInterface = {
       widgetNames: ['x', 'a', 'aaaaa'],
+      lastUpdate: new Date().toDateString(),
+      isShowingMessage: false,
+      message: ''
     }
-    const action: Iaction = {
+    const action: UnionInterface = {
       type: actionTypes.DELETE_WIDGET_NAME,
       widgetName: nameDeleted,
     }
@@ -65,7 +72,7 @@ describe('reducer', () => {
   })
   it('should return a state with the isShowingMessage value true', () => {
     preState.isShowingMessage = false
-    const action: Iaction =
+    const action: UnionInterface =
       { type: actionTypes.SHOW_MESSAGE }
     const newState = reducer(preState,
       action)
@@ -73,12 +80,9 @@ describe('reducer', () => {
   })
   it('should return a state with the isShowingMessage value false', () => {
     preState.isShowingMessage = true
-    const action: Iaction =
+    const action: UnionInterface =
       { type: actionTypes.HIDE_MESSAGE }
     const newState = reducer(preState, action)
     expect(newState.isShowingMessage).toBe(false)
-  })
-  it('should throw an error when an incorrect action type is used', () => {
-    expect(() => reducer({}, { type: 'DOES_NOT_EXIST' })).toThrow()
   })
 })

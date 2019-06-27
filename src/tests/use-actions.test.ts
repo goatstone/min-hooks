@@ -10,6 +10,7 @@ let initState: StateInterface = {
   widgetNames: [],
   lastUpdate: '',
   isShowingMessage: false,
+  message: ''
 }
 
 describe('useActions', () => {
@@ -25,7 +26,7 @@ describe('useActions', () => {
   })
 })
 describe('actions', () => {
-  let dispatch
+  let dispatch: any
   beforeEach(() => {
     dispatch = jest.fn()
     actions = useActions(initState, dispatch)
@@ -46,7 +47,10 @@ describe('actions', () => {
     it('should call dispatch with a specific object if argument value does exist', () => {
       const widgetname = 'xxx'
       const testState = {
-        widgetNames: [widgetname]
+        widgetNames: [widgetname],
+        lastUpdate: '',
+        isShowingMessage: false,
+        message: ''
       }
       const actions = useActions(testState, dispatch)
       const expectedDispatchArg = {
@@ -63,7 +67,7 @@ describe('actions', () => {
         type: actionTypes.EDIT_WIDGET_NAME,
         widgetName: 'xxx'
       }
-      actions.editWidgetName(expectedDispatchArg.widgetName)
+      actions.editWidgetName('abc', expectedDispatchArg.widgetName)
       expect(dispatch).toBeCalledWith(expectedDispatchArg)
     })
   })

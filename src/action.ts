@@ -13,10 +13,14 @@ export interface IshowMessage {
 export interface ihideMessage {
   (): void
 }
+export interface setMessageInterface {
+  (message: string): void
+}
 export interface ActionsInterface {
   addWidgetName: IaddWidgetName
   editWidgetName: IeditWidgeName
   deleteWidgetName: IdeleteWidgetName
   showMessage: IshowMessage
   hideMessage: ihideMessage
+  setMessage: setMessageInterface
 }

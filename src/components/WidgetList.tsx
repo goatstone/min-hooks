@@ -1,13 +1,14 @@
 import React from 'react'
 import { StoreContext, StoreContextInterface } from '../StoreContext'
+// import { string } from 'prop-types';
 import './WidgetList.css'
 
 const WidgetList: React.FC = () => {
   const { state, actions }: StoreContextInterface = React.useContext(StoreContext)
-  const editWidgetName = widgetName => {
+  const editWidgetName = (widgetName: string) => {
     console.log('wn', widgetName)
   }
-  const deletWidgetName = target => {
+  const deletWidgetName = (target: string) => {
     actions.deleteWidgetName(target)
   }
   return (

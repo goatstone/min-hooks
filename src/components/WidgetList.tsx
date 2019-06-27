@@ -3,19 +3,40 @@ import { StoreContext, StoreContextInterface } from '../StoreContext'
 import './WidgetList.css'
 
 const WidgetList: React.FC = () => {
-  const { state }: StoreContextInterface = React.useContext(StoreContext)
-
+  const { state, actions }: StoreContextInterface = React.useContext(StoreContext)
+  const editWidgetName = widgetName => {
+    console.log('wn', widgetName)
+  }
+  const deletWidgetName = target => {
+    actions.deleteWidgetName(target)
+  }
   return (
     <article className="widget-list">
       <div className="widget-list-grid">
         {
           state.widgetNames.map(el => (
-            <React.Fragment>
-              <div key={`${el}${Math.random()}`}>
+            <React.Fragment key={`${el}${Math.random()}`}>
+              <div>
                 {el}
               </div>
-              <div>DEL</div>
-              <div>EDIT</div>
+              <div>
+                <button
+                  type="button"
+                  className="delete-widget"
+                  onClick={() => deletWidgetName(el)}
+                >
+                  Delete
+                </button>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  className="edit-widget"
+                  onClick={() => editWidgetName(el)}
+                >
+                  Edit
+                </button>
+              </div>
             </React.Fragment>
           ))
         }

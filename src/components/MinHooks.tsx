@@ -11,7 +11,7 @@ import {
   MessageControl,
   WidgetList,
   WidgetAdd,
-} from './components'
+} from '.'
 
 const MinHooks: React.FC = () => {
   // global state

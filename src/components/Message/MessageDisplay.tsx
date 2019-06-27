@@ -1,5 +1,5 @@
 import React from 'react'
-import { StoreContext, StoreContextInterface } from '../../StoreContext'
+import { StoreContext, StoreContextInterface } from '../StoreContext'
 import './MessageDisplay.css'
 
 const MessageDisplay: React.FC = () => {

@@ -21,8 +21,8 @@ describe('<MinHooks />', () => {
       message: 'abc',
     }))
     /* eslint prefer-destructuring: 0 */
-    StoreProvider = require('../StoreContext').StoreProvider
-    MinHooks = require('../MinHooks').default
+    StoreProvider = require('../components/StoreContext').StoreProvider
+    MinHooks = require('../components/MinHooks').default
     element = mount(
       <StoreProvider>
         <MinHooks />

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StoreContext, StoreContextInterface } from '../StoreContext'
+import { StoreContext, StoreContextInterface } from './StoreContext'
 import './WidgetAdd.css'
 
 const WidgetAdd: React.FC = () => {

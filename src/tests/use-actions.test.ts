@@ -1,9 +1,9 @@
-import useActions from '../use-actions'
-import { ActionsInterface } from '../action'
+import useActions from '../action'
+import { AppActionsInterface } from '../action'
 import { StateInterface } from '../state'
 import { actionTypes } from '../reducer'
 
-let actions: ActionsInterface
+let actions: AppActionsInterface
 let initState: StateInterface = {
   widgetNames: [],
   lastUpdate: '',

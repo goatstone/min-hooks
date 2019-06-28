@@ -1,34 +1,33 @@
 import { StateInterface } from './state'
 import { actionTypes } from './reducer'
 
-export interface IaddWidgetName {
+interface addWidgetNameInterface {
   (widgetName: string): void
 }
-export interface IeditWidgeName {
+interface editWidgeNameInerface {
   (widgetName: string, newWidgetName: string): void
 }
-export interface IdeleteWidgetName {
+interface deleteWidgetNameInterface {
   (widgetName: string): void
 }
-export interface IshowMessage {
+interface showMessageInterface {
   (): void
 }
-export interface ihideMessage {
+interface hideMessageInerface {
   (): void
 }
-export interface setMessageInterface {
+interface setMessageInterface {
   (message: string): void
 }
 export interface AppActionsInterface {
-  addWidgetName: IaddWidgetName
-  editWidgetName: IeditWidgeName
-  deleteWidgetName: IdeleteWidgetName
-  showMessage: IshowMessage
-  hideMessage: ihideMessage
+  addWidgetName: addWidgetNameInterface
+  editWidgetName: editWidgeNameInerface
+  deleteWidgetName: deleteWidgetNameInterface
+  showMessage: showMessageInterface
+  hideMessage: hideMessageInerface
   setMessage: setMessageInterface
 }
-// import { AppActionsInterface } from './action'
-// useAppAction
+
 function useAction(state: StateInterface, dispatch: (arg0: object) => void)
   : AppActionsInterface {
   function addWidgetName(widgetName: string): void {

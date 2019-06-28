@@ -10,10 +10,12 @@ export interface StoreContextInterface {
 }
 
 const StoreContext = React.createContext<any>(defaultState)
-
+interface dispatchInterface {
+  (arg0: object) : void
+}
 const StoreProvider: React.FC = ({ children }) => {
   // any, any here to remove errors with dispatch type TODO improve type
-  const [state, dispatch]: [any, any] = React.useReducer(reducer, defaultState)
+  const [state, dispatch]: [StateInterface, any] = React.useReducer(reducer, defaultState)
   const actions: AppActionsInterface = useAction(state, dispatch)
 
   return (

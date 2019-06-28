@@ -1,0 +1,1 @@
+convert -background transparent min-hooks-art.svg min-hooks-art.png

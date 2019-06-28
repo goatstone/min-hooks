@@ -1,6 +1,8 @@
-# MinHooks
+# MinHooks  <img src="art/min-hooks-art.png" alt="drawing" width="75"/>
+
 
 A project to layout global and local state patterns with React React Hooks and Reactive Streams
+
 
 [![CircleCI](https://circleci.com/gh/JoseHerminioCollas/min-hooks/tree/master.svg?style=svg)](https://circleci.com/gh/JoseHerminioCollas/min-hooks/tree/master)
 

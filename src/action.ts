@@ -1,5 +1,5 @@
 import { StateInterface } from './state'
-import { actionTypes } from './reducer'
+import { actionTypes, dispatchInterface } from './reducer'
 
 interface addWidgetNameInterface {
   (widgetName: string): void
@@ -28,13 +28,12 @@ export interface AppActionsInterface {
   setMessage: setMessageInterface
 }
 
-function useAction(state: StateInterface, dispatch: (arg0: object) => void)
+function useAction(state: StateInterface, dispatch: dispatchInterface)
   : AppActionsInterface {
   function addWidgetName(widgetName: string): void {
     if (state.widgetNames.includes(widgetName)) {
       dispatch({
         type: actionTypes.SHOW_MESSAGE,
-        message: 'Name exists in list.',
       })
     } else {
       dispatch({

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import defaultState, { StateInterface } from '../state'
-import reducer from '../reducer'
+import reducer, { dispatchInterface } from '../reducer'
 import useAction, { AppActionsInterface } from '../action'
 
 export interface StoreContextInterface {
@@ -10,12 +10,11 @@ export interface StoreContextInterface {
 }
 
 const StoreContext = React.createContext<any>(defaultState)
-interface dispatchInterface {
-  (arg0: object) : void
-}
+
 const StoreProvider: React.FC = ({ children }) => {
   // any, any here to remove errors with dispatch type TODO improve type
-  const [state, dispatch]: [StateInterface, any] = React.useReducer(reducer, defaultState)
+  const [state, dispatch]: [StateInterface, dispatchInterface] = React
+    .useReducer(reducer, defaultState)
   const actions: AppActionsInterface = useAction(state, dispatch)
 
   return (

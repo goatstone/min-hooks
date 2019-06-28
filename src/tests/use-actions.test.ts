@@ -53,7 +53,6 @@ describe('actions', () => {
       const actions = useActions(testState, dispatch)
       const expectedDispatchArg = {
         type: actionTypes.SHOW_MESSAGE,
-        message: 'Name exists in list.'
       }
       actions.addWidgetName(widgetname)
       expect(dispatch).toBeCalledWith(expectedDispatchArg)

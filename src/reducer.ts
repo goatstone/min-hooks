@@ -26,22 +26,23 @@ export interface DeleteNameActionInterface {
 export interface Iaction {
   type: typeof actionTypes.ADD_WIDGET_NAME
   widgetName: string
-  // newWidgetName?: string
-  // message?: string
 }
 interface EditNameActionInterface {
   type: typeof actionTypes.EDIT_WIDGET_NAME
   widgetName: string
   newWidgetName: string
-  // message: string
 }
-export type UnionInterface = EditNameActionInterface
+export type UnionInterface =
+| EditNameActionInterface
 | Iaction
 | DeleteNameActionInterface
 | ShowMessageActionInterface
 | HideMessageActionInterface
 | SetMessageActionInterface
 
+export interface dispatchInterface {
+  (arg0: UnionInterface) : void
+}
 function replaceName(state: StateInterface, widgetName: string, newWidgetName: string): string[] {
   const newArray = [...state.widgetNames]
   const indexOfWidgetName: number = state.widgetNames.indexOf(widgetName)

@@ -84,9 +84,8 @@ describe('actions', () => {
     it('should call dispatch with a specific object', () => {
       const expectedDispatchArg = {
         type: actionTypes.SHOW_MESSAGE,
-        message: 'xxx'
       }
-      actions.showMessage(expectedDispatchArg.message)
+      actions.showMessage()
       expect(dispatch).toBeCalledWith(expectedDispatchArg)
     })
   })

@@ -5,16 +5,15 @@ import {
   StoreContextInterface,
 } from './StoreContext'
 import {
-  WidgetListManage,
-  WidgetHeader,
   MessageDisplay,
   MessageControl,
+  WidgetListManage,
+  WidgetHeader,
   WidgetList,
   WidgetAdd,
 } from '.'
 
 const MinHooks: React.FC = () => {
-  // global state
   const { state }: StoreContextInterface = React.useContext(StoreContext)
 
   return (

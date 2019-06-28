@@ -11,7 +11,7 @@ export interface IdeleteWidgetName {
   (widgetName: string): void
 }
 export interface IshowMessage {
-  (message: string): void
+  (): void
 }
 export interface ihideMessage {
   (): void
@@ -57,10 +57,9 @@ function useAction(state: StateInterface, dispatch: (arg0: object) => void)
       widgetName,
     })
   }
-  function showMessage(message: string) {
+  function showMessage() {
     dispatch({
       type: actionTypes.SHOW_MESSAGE,
-      message,
     })
   }
   function hideMessage() {

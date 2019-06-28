@@ -6,7 +6,7 @@ import useAction, { AppActionsInterface } from '../action'
 
 export interface StoreContextInterface {
   readonly state: StateInterface
-  readonly actions: any
+  readonly actions: AppActionsInterface
 }
 
 const StoreContext = React.createContext<any>(defaultState)

@@ -19,6 +19,9 @@ interface hideMessageInerface {
 interface setMessageInterface {
   (message: string): void
 }
+interface setNameUpdateModeInterface {
+  (mode: number, widgetName: string): void
+}
 export interface AppActionsInterface {
   addWidgetName: addWidgetNameInterface
   editWidgetName: editWidgeNameInerface
@@ -26,6 +29,7 @@ export interface AppActionsInterface {
   showMessage: showMessageInterface
   hideMessage: hideMessageInerface
   setMessage: setMessageInterface
+  setNameUpdateMode: setNameUpdateModeInterface
 }
 
 function useAction(state: StateInterface, dispatch: dispatchInterface)
@@ -66,6 +70,9 @@ function useAction(state: StateInterface, dispatch: dispatchInterface)
   function setMessage(message: string) {
     dispatch({ type: actionTypes.SET_MESSAGE, message })
   }
+  function setNameUpdateMode(mode: number, widgetName: string) {
+    dispatch({ type: actionTypes.SET_NAME_UPDATE_MODE, mode, widgetName })
+  }
   return {
     addWidgetName,
     editWidgetName,
@@ -73,6 +80,7 @@ function useAction(state: StateInterface, dispatch: dispatchInterface)
     showMessage,
     hideMessage,
     setMessage,
+    setNameUpdateMode,
   }
 }
 

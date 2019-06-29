@@ -1,12 +1,12 @@
 import React from 'react'
 import { StoreContext, StoreContextInterface } from './StoreContext'
-// import { string } from 'prop-types';
+import { nameUpdateModes } from '../state'
 import './WidgetList.css'
 
 const WidgetList: React.FC = () => {
   const { state, actions }: StoreContextInterface = React.useContext(StoreContext)
   const editWidgetName = (widgetName: string) => {
-    console.log('wn', widgetName)
+    actions.setNameUpdateMode(nameUpdateModes.UPDATE, widgetName)
   }
   const deletWidgetName = (target: string) => {
     actions.deleteWidgetName(target)

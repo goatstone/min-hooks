@@ -1,34 +1,61 @@
-import React from 'react'
+import React, { RefObject } from 'react'
 import { StoreContext, StoreContextInterface } from './StoreContext'
 import './WidgetAdd.css'
 
 const WidgetAdd: React.FC = () => {
-  const { state, actions }: StoreContextInterface = React.useContext(StoreContext)
-  const [localState, localSetState] = React.useState('')
+  const text = ['Add ', 'Edit ']
 
-  const setNameValue = ({ target }: any) => {
-    localSetState(target.value)
-  }
+  const { state, actions }: StoreContextInterface = React.useContext(StoreContext)
+  const [localState, localSetState] = React.useState(true)
+  const ipRef: RefObject<any> = React.createRef()
+
   const addWidgetName = () => {
-    actions.addWidgetName(localState)
-    localSetState('')
+    actions.addWidgetName(ipRef.current.value)
+  }
+  function setNameValue(val: string) {
+    localSetState(val.length === 0)
   }
   return (
     <article className="widget-add-control">
-      <h4>Add Widget Name</h4>
-      <input
-        value={localState}
-        onChange={setNameValue}
-      />
-      <button
-        type="button"
-        className="add-widget"
-        onClick={addWidgetName}
-        disabled={localState.length === 0}
-      >
-        Add Widget Name
-        {state.lastUpdate}
-      </button>
+      <h4>
+        {text[state.nameUpdateMode]}
+        Widget Name
+      </h4>
+      {state.updateName.length === 0 && (
+        <React.Fragment>
+          <input
+            ref={ipRef}
+            onChange={e => setNameValue(e.target.value)}
+          />
+          <button
+            type="button"
+            className="add-widget"
+            onClick={addWidgetName}
+            disabled={localState}
+          >
+            Add
+            {state.lastUpdate}
+          </button>
+        </React.Fragment>
+      )}
+      {state.updateName.length > 0 && (
+        <React.Fragment>
+          <input
+            defaultValue={state.updateName}
+            ref={ipRef}
+            onChange={e => setNameValue(e.target.value)}
+          />
+          <button
+            type="button"
+            className="edit-widget"
+            // onClick={addWidgetName}
+            disabled={localState}
+          >
+            Update
+            {state.lastUpdate}
+          </button>
+        </React.Fragment>
+      )}
     </article>
   )
 }

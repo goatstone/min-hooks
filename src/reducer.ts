@@ -7,6 +7,7 @@ enum actionTypes {
   SHOW_MESSAGE = 'SHOW_MESSAGE',
   HIDE_MESSAGE = 'HIDE_MESSAGE',
   SET_MESSAGE = 'SET_MESSAGE',
+  SET_NAME_UPDATE_MODE = 'SET_NAME_UPDATE_MODE',
 }
 export { actionTypes }
 export interface SetMessageActionInterface {
@@ -32,16 +33,22 @@ interface EditNameActionInterface {
   widgetName: string
   newWidgetName: string
 }
+interface SetUpdateNameMode {
+  type: typeof actionTypes.SET_NAME_UPDATE_MODE
+  mode: number
+  widgetName: string
+}
 export type UnionInterface =
-| EditNameActionInterface
-| Iaction
-| DeleteNameActionInterface
-| ShowMessageActionInterface
-| HideMessageActionInterface
-| SetMessageActionInterface
+  | EditNameActionInterface
+  | Iaction
+  | DeleteNameActionInterface
+  | ShowMessageActionInterface
+  | HideMessageActionInterface
+  | SetMessageActionInterface
+  | SetUpdateNameMode
 
 export interface dispatchInterface {
-  (arg0: UnionInterface) : void
+  (arg0: UnionInterface): void
 }
 function replaceName(state: StateInterface, widgetName: string, newWidgetName: string): string[] {
   const newArray = [...state.widgetNames]
@@ -75,6 +82,9 @@ function reducer(state: StateInterface, action: UnionInterface): StateInterface 
       return Object.assign({}, state, { isShowingMessage: false })
     case actionTypes.SET_MESSAGE:
       return Object.assign({}, state, { message: action.message })
+    case actionTypes.SET_NAME_UPDATE_MODE:
+      return Object.assign({}, state,
+        { nameUpdateMode: action.mode, updateName: action.widgetName })
     default:
       throw new Error('action type does not exist')
   }

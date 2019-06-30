@@ -6,7 +6,8 @@ import './WidgetList.css'
 const WidgetList: React.FC = () => {
   const { state, actions }: StoreContextInterface = React.useContext(StoreContext)
   const editWidgetName = (widgetName: string) => {
-    actions.setNameUpdateMode(nameUpdateModes.UPDATE, widgetName, 'a')
+    const updateNameKey = widgetName
+    actions.setNameUpdateMode(nameUpdateModes.UPDATE, widgetName, updateNameKey)
   }
   const deletWidgetName = (target: string) => {
     actions.deleteWidgetName(target)

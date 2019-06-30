@@ -94,7 +94,7 @@ function reducer(state: StateInterface, action: UnionInterface): StateInterface 
         {
           nameUpdateMode: action.mode,
           updateName: action.widgetName,
-          updatenNameKey: action.updateNameKey,
+          updateNameKey: action.updateNameKey,
         })
     case actionTypes.SET_UPDATE_NAME:
       return Object.assign({}, state,

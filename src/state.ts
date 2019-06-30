@@ -16,7 +16,7 @@ const defaultState = {
   message: '',
   nameUpdateMode: nameUpdateModes.ADD,
   updateName: '',
-  updateNameKey: '',
+  updateNameKey: 'init',
 }
 
 export { nameUpdateModes }

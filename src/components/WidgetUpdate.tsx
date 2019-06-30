@@ -40,8 +40,10 @@ const WidgetUpdate: React.FC = () => {
   return (
     <article className="widget-update-control">
       <h4>
-        Update Widget Name
-        {localState}
+        Update Widget Name ::
+        {state.updateNameKey}
+         ::
+        {state.updateName}
       </h4>
       <input
         value={localState}

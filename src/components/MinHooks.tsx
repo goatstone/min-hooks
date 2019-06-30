@@ -11,6 +11,7 @@ import {
   WidgetHeader,
   WidgetList,
   WidgetAdd,
+  WidgetUpdate,
 } from '.'
 
 const MinHooks: React.FC = () => {
@@ -22,6 +23,7 @@ const MinHooks: React.FC = () => {
       <div className="min-hooks-body">
         <div className="widgets-container">
           <WidgetAdd />
+          <WidgetUpdate />
           <WidgetListManage>
             <h3>Widget Name List</h3>
             {state.lastUpdate}

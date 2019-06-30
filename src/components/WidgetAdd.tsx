@@ -1,61 +1,35 @@
-import React, { RefObject } from 'react'
+import React from 'react'
 import { StoreContext, StoreContextInterface } from './StoreContext'
 import './WidgetAdd.css'
 
 const WidgetAdd: React.FC = () => {
-  const text = ['Add ', 'Edit ']
-
-  const { state, actions }: StoreContextInterface = React.useContext(StoreContext)
-  const [localState, localSetState] = React.useState(true)
-  const ipRef: RefObject<any> = React.createRef()
-
+  const { actions }: StoreContextInterface = React.useContext(StoreContext)
+  const [widgetName, setWidgetName] = React.useState('')
+  // set global value
   const addWidgetName = () => {
-    actions.addWidgetName(ipRef.current.value)
+    actions.addWidgetName(widgetName)
+    setWidgetName('')
   }
-  function setNameValue(val: string) {
-    localSetState(val.length === 0)
-  }
+  // maintain local values
+  const setNameValue = (name: string) => setWidgetName(name)
+
   return (
     <article className="widget-add-control">
       <h4>
-        {text[state.nameUpdateMode]}
-        Widget Name
+        Add Widget Name
       </h4>
-      {state.updateName.length === 0 && (
-        <React.Fragment>
-          <input
-            ref={ipRef}
-            onChange={e => setNameValue(e.target.value)}
-          />
-          <button
-            type="button"
-            className="add-widget"
-            onClick={addWidgetName}
-            disabled={localState}
-          >
-            Add
-            {state.lastUpdate}
-          </button>
-        </React.Fragment>
-      )}
-      {state.updateName.length > 0 && (
-        <React.Fragment>
-          <input
-            defaultValue={state.updateName}
-            ref={ipRef}
-            onChange={e => setNameValue(e.target.value)}
-          />
-          <button
-            type="button"
-            className="edit-widget"
-            // onClick={addWidgetName}
-            disabled={localState}
-          >
-            Update
-            {state.lastUpdate}
-          </button>
-        </React.Fragment>
-      )}
+      <input
+        value={widgetName}
+        onChange={e => setNameValue(e.target.value)}
+      />
+      <button
+        type="button"
+        className="add-widget"
+        onClick={addWidgetName}
+        disabled={widgetName.length === 0}
+      >
+        Add
+      </button>
     </article>
   )
 }

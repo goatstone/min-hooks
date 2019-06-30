@@ -12,6 +12,7 @@ import {
   WidgetList,
   WidgetAdd,
   WidgetUpdate,
+  Welcome,
 } from '.'
 
 const MinHooks: React.FC = () => {
@@ -20,6 +21,7 @@ const MinHooks: React.FC = () => {
   return (
     <section className="min-hooks">
       <WidgetHeader />
+      <Welcome />
       <div className="min-hooks-body">
         <div className="widgets-container">
           <WidgetAdd />

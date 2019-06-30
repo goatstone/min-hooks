@@ -4,7 +4,6 @@ import { MessageDisplay, MessageControl } from './Message'
 import WidgetList from './WidgetList'
 import WidgetAdd from './WidgetAdd'
 import WidgetUpdate from './WidgetUpdate'
-import { Welcome } from './WidgetUpdateC'
 
 export {
   MessageDisplay,
@@ -14,5 +13,4 @@ export {
   WidgetList,
   WidgetAdd,
   WidgetUpdate,
-  Welcome,
 }

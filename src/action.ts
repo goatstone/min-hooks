@@ -23,7 +23,7 @@ interface setNameUpdateModeInterface {
   (mode: number, widgetName: string, updateNameKey: string): void
 }
 interface setUpdateNameInerface {
-  (widgetName: string, updateNameKey: string) : void
+  (widgetName: string) : void
 }
 export interface AppActionsInterface {
   addWidgetName: addWidgetNameInterface

@@ -3,6 +3,7 @@ import { actionTypes, UnionInterface } from '../reducer'
 import { StateInterface } from '../state'
 
 let preState: StateInterface
+const nameUpdateModes = Object.freeze({ ADD: 0, UPDATE: 1 })
 
 describe('reducer', () => {
   beforeEach(() => {
@@ -10,7 +11,10 @@ describe('reducer', () => {
       widgetNames: [],
       lastUpdate: '',
       isShowingMessage: false,
-      message: 'abc'
+      message: 'abc',
+      nameUpdateMode: nameUpdateModes.ADD,
+      updateName: '',
+      updateNameKey: 'init',      
     }
   })
   it('should return a state with string added', () => {
@@ -44,7 +48,10 @@ describe('reducer', () => {
       widgetNames: ['x', nameDeleted, 'aaaaa'],
       lastUpdate: new Date().toDateString(),
       isShowingMessage: false,
-      message: ''
+      message: '',
+      nameUpdateMode: nameUpdateModes.ADD,
+      updateName: '',
+      updateNameKey: 'init',   
     }
     const action: UnionInterface = {
       type: actionTypes.DELETE_WIDGET_NAME,
@@ -60,7 +67,10 @@ describe('reducer', () => {
       widgetNames: ['x', 'a', 'aaaaa'],
       lastUpdate: new Date().toDateString(),
       isShowingMessage: false,
-      message: ''
+      message: '',
+      nameUpdateMode: nameUpdateModes.ADD,
+      updateName: '',
+      updateNameKey: 'init',
     }
     const action: UnionInterface = {
       type: actionTypes.DELETE_WIDGET_NAME,

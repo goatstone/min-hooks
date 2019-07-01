@@ -3,12 +3,17 @@ import { AppActionsInterface } from '../action'
 import { StateInterface } from '../state'
 import { actionTypes } from '../reducer'
 
+const nameUpdateModes = Object.freeze({ ADD: 0, UPDATE: 1 })
+
 let actions: AppActionsInterface
 let initState: StateInterface = {
-  widgetNames: [],
+  widgetNames: ['a'],
   lastUpdate: '',
   isShowingMessage: false,
-  message: ''
+  nameUpdateMode: nameUpdateModes.ADD,
+  message: 'abc',
+  updateName: '',
+  updateNameKey: 'init',
 }
 
 describe('useActions', () => {
@@ -48,7 +53,10 @@ describe('actions', () => {
         widgetNames: [widgetname],
         lastUpdate: '',
         isShowingMessage: false,
-        message: ''
+        message: '',
+        nameUpdateMode: nameUpdateModes.ADD,
+        updateName: '',
+        updateNameKey: 'init',
       }
       const actions = useActions(testState, dispatch)
       const expectedDispatchArg = {

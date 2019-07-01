@@ -13,6 +13,7 @@ import {
   WidgetAdd,
   WidgetUpdate,
 } from '.'
+import { nameUpdateModes } from '../state'
 
 const MinHooks: React.FC = () => {
   const { state }: StoreContextInterface = React.useContext(StoreContext)
@@ -22,8 +23,14 @@ const MinHooks: React.FC = () => {
       <WidgetHeader />
       <div className="min-hooks-body">
         <div className="widgets-container">
-          <WidgetAdd />
-          <WidgetUpdate />
+          {
+            state.nameUpdateMode === nameUpdateModes.ADD
+            && <WidgetAdd />
+          }
+          {
+            state.nameUpdateMode === nameUpdateModes.UPDATE
+            && <WidgetUpdate />
+          }
           <WidgetListManage>
             <h3>Widget Name List</h3>
             {state.lastUpdate}

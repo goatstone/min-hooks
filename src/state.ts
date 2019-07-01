@@ -12,8 +12,8 @@ export interface StateInterface {
 const defaultState = {
   widgetNames: ['a', 'b', 'c'],
   lastUpdate: '',
-  isShowingMessage: false,
-  message: '',
+  isShowingMessage: true,
+  message: 'Welcome',
   nameUpdateMode: nameUpdateModes.ADD,
   updateName: '',
   updateNameKey: 'init',

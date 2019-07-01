@@ -3,7 +3,10 @@ import './WidgetHeader.css'
 
 const WidgetHeader: React.FC = () => (
   <header className="widget-header">
-    <h3>Widgets</h3>
+    <h3>
+      Widgets Names
+      <img src="min-hooks-art.png" alt="" width="30" />
+    </h3>
   </header>
 )
 

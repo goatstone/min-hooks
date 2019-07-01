@@ -3,8 +3,10 @@ article.message-control {
     flex-direction: column;
     align-items: flex-start;
     align-self: flex-start;
-    padding: 1em;
+    padding: 0.5em;
     background: lightgray;
+    margin: 2px;
+    min-width: 325px;
 }
 article.message-control .message-control-layout-a {
     display: flex;

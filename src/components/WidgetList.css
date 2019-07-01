@@ -1,7 +1,13 @@
 article.widget-list {
+  margin: 2px;
 }
 article.widget-list .widget-list-grid{
     display: grid;
     grid-template-columns: 100px 100px 100px;
     background: whitesmoke;
+    padding: 0.5em;
+}
+article.widget-list .widget-list-grid div{
+    padding: 0.1em;
+    border-bottom: 1px solid #eee;
 }

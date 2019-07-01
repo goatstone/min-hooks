@@ -1,3 +1,7 @@
 article.widget-list-manage {
+    align-self: flex-start;
     background: lightgray;
+    min-width: 325px;
+    margin: 2px;
+    padding: 0.5em;
 }

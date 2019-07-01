@@ -18,18 +18,20 @@ const WidgetAdd: React.FC = () => {
       <h4>
         Add Widget Name
       </h4>
-      <input
-        value={widgetName}
-        onChange={e => setNameValue(e.target.value)}
-      />
-      <button
-        type="button"
-        className="add-widget"
-        onClick={addWidgetName}
-        disabled={widgetName.length === 0}
-      >
-        Add
-      </button>
+      <fieldset>
+        <input
+          value={widgetName}
+          onChange={e => setNameValue(e.target.value)}
+        />
+        <button
+          type="button"
+          className="add-widget"
+          onClick={addWidgetName}
+          disabled={widgetName.length === 0}
+        >
+          Add
+        </button>
+      </fieldset>
     </article>
   )
 }

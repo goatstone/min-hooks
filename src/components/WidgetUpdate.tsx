@@ -19,19 +19,20 @@ const WidgetUpdate: React.FC = () => {
       <h4>
         Update Widget Name
       </h4>
-      <input
-        value={state.updateName}
-        onChange={setUpdateName}
-      />
-      <button
-        type="button"
-        className="update-widget"
-        onClick={updateWidgetName}
-        disabled={state.updateName.length === 0}
-      >
-        Update
-        {state.lastUpdate}
-      </button>
+      <fieldset>
+        <input
+          value={state.updateName}
+          onChange={setUpdateName}
+        />
+        <button
+          type="button"
+          className="update-widget"
+          onClick={updateWidgetName}
+          disabled={state.updateName.length === 0}
+        >
+          Update
+        </button>
+      </fieldset>
     </article>
   )
 }

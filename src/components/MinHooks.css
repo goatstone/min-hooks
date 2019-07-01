@@ -8,12 +8,23 @@ section.min-hooks {
  .widgets-container {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+}
+@media screen and (min-width: 675px) {
+  div.widgets-container {
+      flex-direction: row;
+    }
 }
 div.min-hooks-body{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   max-width: 900px;
+}
+@media screen and (max-width: 400px) {
+  div.min-hooks-body {
+      flex-direction: column  ;
+    }
 }
 article.message-display {
   position: fixed;

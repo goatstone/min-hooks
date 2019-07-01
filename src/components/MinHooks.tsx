@@ -32,7 +32,7 @@ const MinHooks: React.FC = () => {
             && <WidgetUpdate />
           }
           <WidgetListManage>
-            <h3>Widget Name List</h3>
+            <h4>Widget Name List</h4>
             {state.lastUpdate}
             <WidgetList />
           </WidgetListManage>

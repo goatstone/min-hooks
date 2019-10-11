@@ -1,5 +1,5 @@
-import useActions from '../action'
-import { AppActionsInterface } from '../action'
+import useActions from '../use-action'
+import { AppActionsInterface } from '../use-action'
 import { StateInterface } from '../state'
 import { actionTypes } from '../reducer'
 

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import defaultState, { StateInterface } from '../state'
 import reducer, { dispatchInterface } from '../reducer'
-import useAction, { AppActionsInterface } from '../action'
+import useAction, { AppActionsInterface } from '../use-action'
 
 export interface StoreContextInterface {
   readonly state: StateInterface

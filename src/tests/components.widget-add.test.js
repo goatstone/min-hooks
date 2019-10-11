@@ -7,7 +7,6 @@ import WidgetAdd from '../components/WidgetAdd'
 Enzyme.configure({ adapter: new Adapter() })
 
 const mockaddWidgetName = jest.fn()
-mockaddWidgetName()
 jest.mock('../components/StoreContext', () => (
   {
     StoreContext: {
@@ -26,7 +25,7 @@ describe('WidgetAdd', () => {
       <WidgetAdd />,
     )
     act(() => {
-      el.find('button').prop('onCLick')
+      el.find('button').prop('onClick')()
     })
     expect(el.find('input').length).toBe(1)
     expect(el.find('button').length).toBe(1)

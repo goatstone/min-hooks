@@ -25,10 +25,18 @@ describe('WidgetAdd', () => {
       <WidgetAdd />,
     )
     act(() => {
-      el.find('button').prop('onClick')()
+      // prop value does not get updated like this!!!!
+      el.find('input').prop('onChange')({ target: { value: 'x' } })
     })
+    el.update()
     expect(el.find('input').length).toBe(1)
     expect(el.find('button').length).toBe(1)
+    expect(el.find('input').prop('value')).toBe('x')
+    // expect(el.text()).toBe('x')
+
+    act(() => {
+      el.find('button').prop('onClick')()
+    })
     expect(mockaddWidgetName.mock.calls.length).toBe(1)
   })
 })

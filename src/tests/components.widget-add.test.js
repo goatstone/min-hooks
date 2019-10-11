@@ -19,20 +19,21 @@ jest.mock('../components/StoreContext', () => (
     },
   }
 ))
+
 describe('WidgetAdd', () => {
   it('should mount and call an action in its Context', () => {
     const el = mount(
       <WidgetAdd />,
     )
+
+    expect(el.find('input').length).toBe(1)
+    expect(el.find('button').length).toBe(1)
+
     act(() => {
-      // prop value does not get updated like this!!!!
       el.find('input').prop('onChange')({ target: { value: 'x' } })
     })
     el.update()
-    expect(el.find('input').length).toBe(1)
-    expect(el.find('button').length).toBe(1)
     expect(el.find('input').prop('value')).toBe('x')
-    // expect(el.text()).toBe('x')
 
     act(() => {
       el.find('button').prop('onClick')()

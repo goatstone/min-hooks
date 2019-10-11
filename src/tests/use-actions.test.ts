@@ -74,7 +74,7 @@ describe('actions', () => {
         newWidgetName: 'abcd'
       }
       actions.editWidgetName('abc', 'abcd')
-        expect(dispatch).toBeCalledWith(expectedDispatchArg)
+      expect(dispatch).toBeCalledWith(expectedDispatchArg)
     })
   })
   describe('deleteWidgeName', () => {
@@ -103,6 +103,44 @@ describe('actions', () => {
       }
       actions.hideMessage()
       expect(dispatch).toBeCalledWith(expectedDispatchArg)
+    })
+  })
+  describe('setMessage', () => {
+    it('should call dispatch with the message value', () => {
+      const expectedDispatchArg = {
+        type: actionTypes.SET_MESSAGE,
+        message: 'AAA'
+      }
+      actions.setMessage(expectedDispatchArg.message)
+      expect(dispatch).toHaveBeenCalledWith(expectedDispatchArg)
+    })
+  })
+  describe('setNameUpdateMode', () => {
+    it('should call dispatch with widgetName provided', () => {
+      const expectedDispatchArg = {
+        type: actionTypes.SET_NAME_UPDATE_MODE,
+        mode: 1,
+        widgetName: 'XXX',
+        updateNameKey: 'XXX'
+      }
+      actions.setNameUpdateMode(
+        expectedDispatchArg.mode,
+        expectedDispatchArg.widgetName,
+        expectedDispatchArg.updateNameKey,
+      )
+      expect(dispatch).toHaveBeenCalledWith(expectedDispatchArg)
+    })
+  })
+  describe('setUpdateName', () => {
+    it('should call dispatch with expected argument', () => {
+      const expectedDispatchArg = {
+        type: actionTypes.SET_UPDATE_NAME,
+        widgetName: 'XXX',
+      }
+      actions.setUpdateName(
+        expectedDispatchArg.widgetName,
+      )
+      expect(dispatch).toHaveBeenCalledWith(expectedDispatchArg)
     })
   })
 })

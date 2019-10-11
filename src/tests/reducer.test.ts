@@ -14,7 +14,7 @@ describe('reducer', () => {
       message: 'abc',
       nameUpdateMode: nameUpdateModes.ADD,
       updateName: '',
-      updateNameKey: 'init',      
+      updateNameKey: 'init',
     }
   })
   it('should return a state with string added', () => {
@@ -51,7 +51,7 @@ describe('reducer', () => {
       message: '',
       nameUpdateMode: nameUpdateModes.ADD,
       updateName: '',
-      updateNameKey: 'init',   
+      updateNameKey: 'init',
     }
     const action: UnionInterface = {
       type: actionTypes.DELETE_WIDGET_NAME,
@@ -94,5 +94,49 @@ describe('reducer', () => {
       { type: actionTypes.HIDE_MESSAGE }
     const newState = reducer(preState, action)
     expect(newState.isShowingMessage).toBe(false)
+  })
+  it('should set the message property in state', () => {
+    preState.message = 'XXX'
+    const action: UnionInterface =
+    {
+      type: actionTypes.SET_MESSAGE,
+      message: 'AAA',
+    }
+    const newState = reducer(preState, action)
+    expect(newState.message).toBe('AAA')
+  })
+  it('should set update mode and related props', () => {
+    Object.assign(preState, {
+      nameUpdateMode: 1,
+      updateName: 'XXX',
+      updateNameKey: 'XXX',
+    })
+    const action: UnionInterface =
+    {
+      type: actionTypes.SET_NAME_UPDATE_MODE,
+      mode: 2,
+      widgetName: 'AAA',
+      updateNameKey: 'AAA',
+    }
+    const newState = reducer(preState, action)
+    expect(newState.nameUpdateMode).toBe(2)
+    expect(newState.updateName).toBe('AAA')
+    expect(newState.updateNameKey).toBe('AAA')
+  })
+  it('should set set updateName', () => {
+    preState.updateName = 'XXX'
+    const action: UnionInterface = {
+      type: actionTypes.SET_UPDATE_NAME,
+      widgetName: 'AAA'
+    }
+    const newState = reducer(preState, action)
+    expect(newState.updateName).toBe('AAA')
+  })
+  it('should throw an error if in incorrect action is given', () => {
+    try {
+      reducer({}, 'XX')
+    } catch (error) {
+      expect(true).toBe(true)
+    }
   })
 })

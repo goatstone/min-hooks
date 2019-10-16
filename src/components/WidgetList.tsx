@@ -1,50 +1,50 @@
 import React from 'react'
-import { StoreContext, StoreContextInterface } from './StoreContext'
+import { StoreContext } from './StoreContext'
 import { nameUpdateModes } from '../state'
 import './WidgetList.css'
 
-const WidgetList: React.FC = () => {
-  const { state, actions }: StoreContextInterface = React.useContext(StoreContext)
-  const editWidgetName = (widgetName: string) => {
-    const updateNameKey = widgetName
-    actions.setNameUpdateMode(nameUpdateModes.UPDATE, widgetName, updateNameKey)
-  }
-  const deletWidgetName = (target: string) => {
-    actions.deleteWidgetName(target)
-  }
-  return (
-    <article className="widget-list">
-      <div className="widget-list-grid">
-        {
-          state.widgetNames.map(el => (
-            <React.Fragment key={`${el}${Math.random()}`}>
-              <div>
-                {el}
-              </div>
-              <div>
-                <button
-                  type="button"
-                  className="delete-widget"
-                  onClick={() => deletWidgetName(el)}
-                >
-                  Delete
-                </button>
-              </div>
-              <div>
-                <button
-                  type="button"
-                  className="edit-widget"
-                  onClick={() => editWidgetName(el)}
-                >
-                  Edit
-                </button>
-              </div>
-            </React.Fragment>
-          ))
-        }
-      </div>
-    </article>
-  )
-}
+const WidgetList: React.FC = () => (
+  <StoreContext.Consumer>
+    {({ state, actions }: any) => (
+      <article className="widget-list">
+        <div className="widget-list-grid">
+          {
+            state.widgetNames.map((el: any) => (
+              <React.Fragment key={`${el}`}>
+                <div>
+                  {el}
+                </div>
+                <div>
+                  <button
+                    type="button"
+                    className="delete-widget"
+                    onClick={() => actions.deleteWidgetName(el)}
+                  >
+                    Delete
+                  </button>
+                </div>
+                <div>
+                  <button
+                    type="button"
+                    className="edit-widget"
+                    onClick={
+                      () => (
+                        actions
+                          .setNameUpdateMode(nameUpdateModes.UPDATE, el, el)
+                      )
+                    }
+                  >
+                    Edit
+                  </button>
+                </div>
+              </React.Fragment>
+            ))
+          }
+        </div>
+      </article>
+    )
+    }
+  </StoreContext.Consumer>
+)
 
 export default WidgetList

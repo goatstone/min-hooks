@@ -1,18 +1,22 @@
 import React from 'react'
-// import { act } from 'react-dom/test-utils'
+import { act } from 'react-dom/test-utils'
 import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import WidgetList from '../components/WidgetList'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-// const mockaddWidgetName = jest.fn()
+const mockdeleteWidgetName = jest.fn()
 jest.mock('../components/StoreContext', () => (
   {
     StoreContext: {
       Consumer: props => (props.children({
+        state: {
+          widgetNames: [],
+        },
         actions: {
-          // addWidgetName: mockaddWidgetName,
+          deleteWidgetName: mockdeleteWidgetName,
+          setNameUpdateMode: () => { },
         },
       })
       ),
@@ -20,12 +24,16 @@ jest.mock('../components/StoreContext', () => (
   }
 ))
 
-describe.skip('WidgetList', () => {
+describe('WidgetList', () => {
   it('should mount and display a list', () => {
-    const el = mount(
-      <WidgetList />,
+    let wrapper
+    act(() => {
+      wrapper = mount(
+        <WidgetList />,
+      )
+    }
     )
 
-    expect(el.find('input').length).toBe(1)
+    expect(wrapper.find('article').length).toBe(1)
   })
 })

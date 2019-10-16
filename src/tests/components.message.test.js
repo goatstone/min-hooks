@@ -8,7 +8,7 @@ import {
 
 Enzyme.configure({ adapter: new Adapter() })
 
-const mockdeleteWidgetName = jest.fn()
+const mockshowMessage = jest.fn()
 const mocksetMessage = jest.fn()
 jest.mock('../components/StoreContext', () => (
   {
@@ -18,7 +18,7 @@ jest.mock('../components/StoreContext', () => (
           widgetNames: ['X'],
         },
         actions: {
-          deleteWidgetName: mockdeleteWidgetName,
+          showMessage: mockshowMessage,
           setMessage: mocksetMessage,
         },
       })
@@ -48,8 +48,15 @@ describe('Message Component', () => {
           <MessageControl />
         </React.Fragment>,
       )
+      wrapper.find('input[name="message"]').prop('onChange')({ target: { value: 'X' } })
+      wrapper.find('button[name="set-message"]').prop('onClick')()
+      wrapper.find('button[name="show-message"]').prop('onClick')()
     })
-    wrapper.find('button[name="set-message"]').prop('onClick')()
+
+    expect(wrapper.find('input[name="message"]').length).toBe(1)
+    expect(wrapper.find('button[name="set-message"]').length).toBe(1)
+    expect(wrapper.find('button[name="show-message"]').length).toBe(1)
     expect(mocksetMessage.mock.calls.length).toBe(1)
+    expect(mockshowMessage.mock.calls.length).toBe(1)
   })
 })

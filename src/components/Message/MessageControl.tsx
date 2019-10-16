@@ -15,6 +15,7 @@ const MessageControl: React.FC = () => {
               Set Message
               <input
                 value={localState}
+                name="message"
                 onChange={e => localSetState(e.target.value)}
               />
             </label>
@@ -34,6 +35,7 @@ const MessageControl: React.FC = () => {
           <fieldset>
             <button
               type="button"
+              name="show-message"
               onClick={actions.showMessage}
               disabled={state.isShowingMessage}
               className="show-message"

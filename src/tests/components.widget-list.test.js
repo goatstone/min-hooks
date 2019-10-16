@@ -7,16 +7,17 @@ import WidgetList from '../components/WidgetList'
 Enzyme.configure({ adapter: new Adapter() })
 
 const mockdeleteWidgetName = jest.fn()
+const mocksetNameUpdateMode = jest.fn()
 jest.mock('../components/StoreContext', () => (
   {
     StoreContext: {
       Consumer: props => (props.children({
         state: {
-          widgetNames: [],
+          widgetNames: ['X'],
         },
         actions: {
           deleteWidgetName: mockdeleteWidgetName,
-          setNameUpdateMode: () => { },
+          setNameUpdateMode: mocksetNameUpdateMode,
         },
       })
       ),
@@ -34,5 +35,18 @@ describe('WidgetList', () => {
     })
 
     expect(wrapper.find('article').length).toBe(1)
+  })
+  it('should call the the correct context action methods', () => {
+    let wrapper
+    act(() => {
+      wrapper = mount(
+        <WidgetList />,
+      )
+    })
+    wrapper.find('button[name="delete"]').prop('onClick')('widget name')
+    wrapper.find('button[name="edit"]').prop('onClick')('X', 'X', 'X')
+
+    expect(mockdeleteWidgetName.mock.calls.length).toBe(1)
+    expect(mocksetNameUpdateMode.mock.calls.length).toBe(1)
   })
 })

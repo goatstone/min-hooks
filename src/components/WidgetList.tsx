@@ -18,6 +18,7 @@ const WidgetList: React.FC = () => (
                   <button
                     type="button"
                     className="delete-widget"
+                    name="delete"
                     onClick={() => actions.deleteWidgetName(el)}
                   >
                     Delete
@@ -27,6 +28,7 @@ const WidgetList: React.FC = () => (
                   <button
                     type="button"
                     className="edit-widget"
+                    name="edit"
                     onClick={
                       () => (
                         actions

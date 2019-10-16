@@ -31,8 +31,7 @@ describe('WidgetList', () => {
       wrapper = mount(
         <WidgetList />,
       )
-    }
-    )
+    })
 
     expect(wrapper.find('article').length).toBe(1)
   })

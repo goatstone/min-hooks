@@ -1,40 +1,35 @@
 import React from 'react'
-import { StoreContext, StoreContextInterface } from './StoreContext'
+import { StoreContext } from './StoreContext'
 import { nameUpdateModes } from '../state'
 import './WidgetUpdate.css'
 
-const WidgetUpdate: React.FC = () => {
-  const { state, actions }: StoreContextInterface = React.useContext(StoreContext)
-  // update the list of names and set back to ADD mode
-  const updateWidgetName = () => {
-    actions.editWidgetName(state.updateNameKey, state.updateName)
-    actions.setNameUpdateMode(nameUpdateModes.ADD, '', '')
-  }
-  // update value in input field
-  const setUpdateName = (e: any) => {
-    actions.setUpdateName(e.target.value)
-  }
-  return (
-    <article className="widget-update-control">
-      <h4>
-        Update Widget Name
-      </h4>
-      <fieldset>
-        <input
-          value={state.updateName}
-          onChange={setUpdateName}
-        />
-        <button
-          type="button"
-          className="update-widget"
-          onClick={updateWidgetName}
-          disabled={state.updateName.length === 0}
-        >
-          Update
-        </button>
-      </fieldset>
-    </article>
-  )
-}
+const WidgetUpdate: React.FC = () => (
+  <StoreContext.Consumer>
+    {({ state, actions }) => (
+      <article className="widget-update-control">
+        <h4>
+          Update Widget Name
+        </h4>
+        <fieldset>
+          <input
+            value={state.updateName}
+            onChange={e => actions.setUpdateName(e.target.value)}
+          />
+          <button
+            type="button"
+            className="update-widget"
+            onClick={() => {
+              actions.editWidgetName(state.updateNameKey, state.updateName)
+              actions.setNameUpdateMode(nameUpdateModes.ADD, '', '')
+            }}
+            disabled={state.updateName.length === 0}
+          >
+            Update
+          </button>
+        </fieldset>
+      </article>
+    )}
+  </StoreContext.Consumer>
+)
 
 export default WidgetUpdate

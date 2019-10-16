@@ -20,6 +20,7 @@ const MessageControl: React.FC = () => {
             </label>
             <button
               type="button"
+              name="set-message"
               onClick={() => {
                 actions.setMessage(localState)
                 localSetState('')

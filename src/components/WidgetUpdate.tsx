@@ -13,10 +13,12 @@ const WidgetUpdate: React.FC = () => (
         <fieldset>
           <input
             value={state.updateName}
+            name="name"
             onChange={e => actions.setUpdateName(e.target.value)}
           />
           <button
             type="button"
+            name="update"
             className="update-widget"
             onClick={() => {
               actions.editWidgetName(state.updateNameKey, state.updateName)

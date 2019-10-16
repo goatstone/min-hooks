@@ -6,8 +6,9 @@ import WidgetUpdate from '../components/WidgetUpdate'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-const mockdeleteWidgetName = jest.fn()
 const mocksetNameUpdateMode = jest.fn()
+const mockeditWidgetName = jest.fn()
+const mocksetUpdateName = jest.fn()
 jest.mock('../components/StoreContext', () => (
   {
     StoreContext: {
@@ -16,8 +17,9 @@ jest.mock('../components/StoreContext', () => (
           updateName: ['X'],
         },
         actions: {
-          editWidgetName: mockdeleteWidgetName,
-          setUpdateName: mocksetNameUpdateMode,
+          setNameUpdateMode: mocksetNameUpdateMode,
+          editWidgetName: mockeditWidgetName,
+          setUpdateName: mocksetUpdateName,
         },
       })
       ),
@@ -35,5 +37,19 @@ describe('WidgeUpdate', () => {
     })
 
     expect(wrapper.find('article').length).toBe(1)
+  })
+  it('should trigger the correct action method', () => {
+    let wrapper
+    act(() => {
+      wrapper = mount(
+        <WidgetUpdate />,
+      )
+    })
+    wrapper.find('input[name="name"]').prop('onChange')({ target: { value: 'X' } })
+    wrapper.find('button[name="update"]').prop('onClick')()
+
+    expect(mocksetUpdateName.mock.calls.length).toBe(1)
+    expect(mockeditWidgetName.mock.calls.length).toBe(1)
+    expect(mocksetNameUpdateMode.mock.calls.length).toBe(1)
   })
 })

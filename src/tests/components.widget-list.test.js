@@ -1,12 +1,12 @@
 import React from 'react'
-import { act } from 'react-dom/test-utils'
+// import { act } from 'react-dom/test-utils'
 import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import WidgetList from '../components/WidgetList'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-const mockaddWidgetName = jest.fn()
+// const mockaddWidgetName = jest.fn()
 jest.mock('../components/StoreContext', () => (
   {
     StoreContext: {

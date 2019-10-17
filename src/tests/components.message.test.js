@@ -11,13 +11,14 @@ Enzyme.configure({ adapter: new Adapter() })
 
 const mockshowMessage = jest.fn()
 const mocksetMessage = jest.fn()
+const mockisShowingMessage = jest.fn(() => true)
 jest.mock('../components/StoreContext', () => (
   {
     StoreContext: {
       Consumer: props => (props.children({
         state: {
           widgetNames: ['X'],
-          isShowingMessage: true,
+          isShowingMessage: mockisShowingMessage(),
           message: 'X',
         },
         actions: {
@@ -66,15 +67,25 @@ describe('Message Component', () => {
     })
   })
   describe('Message Display', () => {
-    it('should should display the message', () => {
+    it('should should display the message depending on state', () => {
       let wrapper
       act(() => {
         wrapper = mount(
-          <MessageDisplay />
+          <MessageDisplay />,
         )
       })
       expect(wrapper.find('article').length).toBe(1)
       expect(wrapper.find('article').text()).toBe('X')
+    })
+    it('should hide the display depending on state', () => {
+      let wrapper
+      mockisShowingMessage.mockReturnValueOnce(false)
+      act(() => {
+        wrapper = mount(
+          <MessageDisplay />,
+        )
+      })
+      expect(wrapper.find('article').text()).toBe('')
     })
   })
 })

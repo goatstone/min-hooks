@@ -1,41 +1,82 @@
 import React from 'react'
+import { act } from 'react-dom/test-utils'
 import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
+import MinHooks from '../components/MinHooks'
+import { nameUpdateModes } from '../state'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-let MinHooks
-let StoreProvider
+const mocknameUpdateMode = jest.fn(() => nameUpdateModes.UPDATE)
+const mocksetMessage = jest.fn()
+const mockshowMessage = jest.fn()
+const mockisShowingMessage = jest.fn(() => true)
+jest.mock('../components/StoreContext', () => (
+  {
+    StoreContext: {
+      Consumer: props => (props.children({
+        state: {
+          updateName: 'X',
+          nameUpdateMode: mocknameUpdateMode(),
+          lastUpdate: '',
+          widgetNames: ['X'],
+          isShowingMessage: mockisShowingMessage(),
+          message: 'X',
+        },
+        actions: {
+          showMessage: mockshowMessage,
+          setMessage: mocksetMessage,
+        },
+      })
+      ),
+    },
+  }
+))
 
-beforeEach(() => {
-  jest.resetModules()
-})
-
-describe.skip('<MinHooks />', () => {
-  let element
-  beforeAll(() => {
-    jest.mock('../state', () => ({
-      widgetNames: [],
-      lastUpdated: '',
-      isShowingMessage: true,
-      message: 'abc',
-    }))
-    /* eslint prefer-destructuring: 0 */
-    StoreProvider = require('../components/StoreContext').StoreProvider
-    MinHooks = require('../components/MinHooks').default
-    element = mount(
-      <StoreProvider>
-        <MinHooks />
-      </StoreProvider>,
-    )
+describe('<MinHooks />', () => {
+  it('should mount and have certain elements', () => {
+    let wrapper
+    act(() => {
+      wrapper = mount(
+        <MinHooks />,
+      )
+    })
+    expect(wrapper.find('section').length).toBe(1)
+    expect(wrapper.find('WidgetHeader').length).toBe(1)
+    expect(wrapper.find('WidgetListManage').length).toBe(1)
+    expect(wrapper.find('MessageControl').length).toBe(1)
+    expect(wrapper.find('MessageDisplay').length).toBe(1)
   })
-  it('should have a particular shape', () => {
-    expect(element.find('section.min-hooks header').length).toBe(1)
-    expect(element.find('article.message-display'))
-    expect(element.find('article.message-control'))
+  it('should contain information from state', () => {
+    let wrapper
+    act(() => {
+      wrapper = mount(
+        <MinHooks />,
+      )
+    })
+    expect(wrapper.find('WidgetList').length).toBe(1)
+    expect(wrapper.contains('X')).toBe(true)
   })
-  it('should contain information from the state', () => {
-    expect(element.find('article.message-control input').length).toBe(1)
-    expect(element.find('article.message-display').text()).toBe('abc')
+  it('should display AddWidget, hide WidgetAdd depending on state', () => {
+    let wrapper
+    act(() => {
+      mocknameUpdateMode.mockReturnValueOnce(nameUpdateModes.UPDATE)
+      wrapper = mount(
+        <MinHooks />,
+      )
+    })
+    expect(wrapper.find('WidgetUpdate').length).toBe(1)
+    expect(wrapper.find('WidgetAdd').length).toBe(0)
+  })
+  it('should display EditWidget hide WidgetUpdate depending on state', () => {
+    let wrapper
+    act(() => {
+      mocknameUpdateMode.mockReturnValueOnce(nameUpdateModes.ADD)
+      wrapper = mount(
+        <MinHooks />,
+      )
+    })
+    expect(wrapper.find('WidgetUpdate').length).toBe(0)
+    expect(wrapper.find('WidgetAdd').length).toBe(1)
   })
 })

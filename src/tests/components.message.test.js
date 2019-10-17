@@ -4,6 +4,7 @@ import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import {
   MessageControl,
+  MessageDisplay,
 } from '../components/Message'
 
 Enzyme.configure({ adapter: new Adapter() })
@@ -16,6 +17,8 @@ jest.mock('../components/StoreContext', () => (
       Consumer: props => (props.children({
         state: {
           widgetNames: ['X'],
+          isShowingMessage: true,
+          message: 'X',
         },
         actions: {
           showMessage: mockshowMessage,
@@ -34,11 +37,12 @@ describe('Message Component', () => {
       wrapper = mount(
         <React.Fragment>
           <MessageControl />
+          <MessageDisplay />
         </React.Fragment>,
       )
     })
 
-    expect(wrapper.find('article').length).toBe(1)
+    expect(wrapper.find('article').length).toBe(2)
   })
   it('should call the correct action methods', () => {
     let wrapper

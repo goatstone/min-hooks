@@ -44,23 +44,37 @@ describe('Message Component', () => {
 
     expect(wrapper.find('article').length).toBe(2)
   })
-  it('should call the correct action methods', () => {
-    let wrapper
-    act(() => {
-      wrapper = mount(
-        <React.Fragment>
-          <MessageControl />
-        </React.Fragment>,
-      )
-      wrapper.find('input[name="message"]').prop('onChange')({ target: { value: 'X' } })
-      wrapper.find('button[name="set-message"]').prop('onClick')()
-      wrapper.find('button[name="show-message"]').prop('onClick')()
-    })
+  describe('MessageControl', () => {
+    it('should call the correct action methods', () => {
+      let wrapper
+      act(() => {
+        wrapper = mount(
+          <React.Fragment>
+            <MessageControl />
+          </React.Fragment>,
+        )
+        wrapper.find('input[name="message"]').prop('onChange')({ target: { value: 'X' } })
+        wrapper.find('button[name="set-message"]').prop('onClick')()
+        wrapper.find('button[name="show-message"]').prop('onClick')()
+      })
 
-    expect(wrapper.find('input[name="message"]').length).toBe(1)
-    expect(wrapper.find('button[name="set-message"]').length).toBe(1)
-    expect(wrapper.find('button[name="show-message"]').length).toBe(1)
-    expect(mocksetMessage.mock.calls.length).toBe(1)
-    expect(mockshowMessage.mock.calls.length).toBe(1)
+      expect(wrapper.find('input[name="message"]').length).toBe(1)
+      expect(wrapper.find('button[name="set-message"]').length).toBe(1)
+      expect(wrapper.find('button[name="show-message"]').length).toBe(1)
+      expect(mocksetMessage.mock.calls.length).toBe(1)
+      expect(mockshowMessage.mock.calls.length).toBe(1)
+    })
+  })
+  describe('Message Display', () => {
+    it('should should display the message', () => {
+      let wrapper
+      act(() => {
+        wrapper = mount(
+          <MessageDisplay />
+        )
+      })
+      expect(wrapper.find('article').length).toBe(1)
+      expect(wrapper.find('article').text()).toBe('X')
+    })
   })
 })

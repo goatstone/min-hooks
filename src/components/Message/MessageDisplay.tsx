@@ -5,7 +5,7 @@ import './MessageDisplay.css'
 const MessageDisplay: React.FC = () => {
   return (
     <StoreContext.Consumer>
-      {(state) =>
+      {({ state }) =>
         (
           <article className="message-display">
             {state.isShowingMessage ? <p>{state.message}</p> : ''}

@@ -8,6 +8,7 @@ export interface StateInterface {
   nameUpdateMode: number;
   updateName: string;
   updateNameKey: string;
+  cssSheet: object;
 }
 const defaultState = {
   widgetNames: ['a', 'b', 'c'],
@@ -17,6 +18,7 @@ const defaultState = {
   nameUpdateMode: nameUpdateModes.ADD,
   updateName: '',
   updateNameKey: 'init',
+  cssSheet: { classes: {} },
 }
 
 export { nameUpdateModes }

@@ -17,7 +17,7 @@ import { nameUpdateModes } from '../state'
 const MinHooks: React.FC = () => (
   <StoreContext.Consumer>
     {({ state }) => (
-      <section className="min-hooks">
+      <section className={state.cssSheet.classes.container}>
         <WidgetHeader />
         <div className="min-hooks-body">
           <div className="widgets-container">

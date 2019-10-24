@@ -1,15 +1,17 @@
 const main = {
   '@global': {
     body: {
-      color: 'green',
+      margin: 0,
+      background: 'gray',
+      fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+        sans-serif`,
+      color: 'black',
       '@global .message-display': {
         position: 'fixed',
         right: 0,
         bottom: 0,
       },
-    },
-    div: {
-      background: 'red',
     },
     a: {
       textDecoration: 'underline',
@@ -21,34 +23,25 @@ const main = {
     justifyContent: 'center',
     alignItems: 'space-between',
     flexWrap: 'nowrap',
-    padding: '23px',
-    background: 'black',
     '@global': {
-      div: { background: 'blue' },
-      h4: { color: 'red' },
+      h4: { color: 'black' },
     },
     '@global div.min-hooks-body': {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
       maxWidth: '900px',
-      background: 'purple',
+      '@media (max-width: 400px)': {
+        flexDirection: 'column',
+      },
     },
     '@global .widgets-container': {
-      background: 'yellow',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'flex-start',
-    },
-  },
-  '@media (min-width: 675px)': {
-    container: {
-      background: 'white',
-    },
-  },
-  '@media (max-width: 675px)': {
-    container: {
-      background: 'red',
+      '@media (min-width: 675px)': {
+        flexDirection: 'row',
+      },
     },
   },
 }

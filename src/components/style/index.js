@@ -71,6 +71,10 @@ const main = {
     },
   },
   list: {
+    alignSelf: 'flex-start',
+    background: 'lightgray',
+    minWidth: '325px',
+    padding: '0.5em',
     margin: '2px',
     '@global .widget-list-grid': {
       display: 'grid',

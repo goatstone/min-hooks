@@ -44,7 +44,7 @@ describe('<MinHooks />', () => {
     })
     expect(wrapper.find('section').length).toBe(1)
     expect(wrapper.find('WidgetHeader').length).toBe(1)
-    expect(wrapper.find('WidgetListManage').length).toBe(1)
+    expect(wrapper.find('WidgetList').length).toBe(1)
     expect(wrapper.find('MessageControl').length).toBe(1)
     expect(wrapper.find('MessageDisplay').length).toBe(1)
   })

@@ -6,6 +6,8 @@ const WidgetList: React.FC = () => (
   <StoreContext.Consumer>
     {({ state, actions }: any) => (
       <article className={state.cssSheet.classes.list}>
+        <h4>Widget Name List</h4>
+        {state.lastUpdate}
         <div className="widget-list-grid">
           {
             state.widgetNames.map((el: any) => (

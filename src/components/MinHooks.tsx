@@ -5,7 +5,6 @@ import {
 import {
   MessageDisplay,
   MessageControl,
-  WidgetListManage,
   WidgetHeader,
   WidgetList,
   WidgetAdd,
@@ -28,11 +27,7 @@ const MinHooks: React.FC = () => (
               state.nameUpdateMode === nameUpdateModes.UPDATE
               && <WidgetUpdate />
             }
-            <WidgetListManage>
-              <h4>Widget Name List</h4>
-              {state.lastUpdate}
-              <WidgetList />
-            </WidgetListManage>
+            <WidgetList />
           </div>
           <MessageControl />
           <MessageDisplay />

@@ -11,6 +11,7 @@ jest.mock('../components/StoreContext', () => (
   {
     StoreContext: {
       Consumer: props => (props.children({
+        state: { cssSheet: { classes: { addItem: 'X' } } },
         actions: {
           addWidgetName: mockaddWidgetName,
         },

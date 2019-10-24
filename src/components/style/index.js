@@ -70,6 +70,19 @@ const main = {
       },
     },
   },
+  list: {
+    margin: '2px',
+    '@global .widget-list-grid': {
+      display: 'grid',
+      gridTemplateColumns: '100px 100px 100px',
+      background: 'whitesmoke',
+      padding: '0.5em',
+    },
+    '@global .widget-list-grid div': {
+      padding: '0.1em',
+      borderBottom: '1px solid #333',
+    },
+  },
 }
 
 export default main

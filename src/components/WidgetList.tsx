@@ -1,12 +1,11 @@
 import React from 'react'
 import { StoreContext } from './StoreContext'
 import { nameUpdateModes } from '../state'
-import './WidgetList.css'
 
 const WidgetList: React.FC = () => (
   <StoreContext.Consumer>
     {({ state, actions }: any) => (
-      <article className="widget-list">
+      <article className={state.cssSheet.classes.list}>
         <div className="widget-list-grid">
           {
             state.widgetNames.map((el: any) => (

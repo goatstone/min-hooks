@@ -14,6 +14,7 @@ jest.mock('../components/StoreContext', () => (
       Consumer: props => (props.children({
         state: {
           widgetNames: ['X'],
+          cssSheet: { classes: { list: '' } },
         },
         actions: {
           deleteWidgetName: mockdeleteWidgetName,

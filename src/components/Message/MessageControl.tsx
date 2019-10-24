@@ -1,6 +1,5 @@
 import React from 'react'
 import { StoreContext } from '../StoreContext'
-import './MessageControl.css'
 
 const MessageControl: React.FC = () => {
   const [localState, localSetState] = React.useState('')
@@ -8,7 +7,7 @@ const MessageControl: React.FC = () => {
   return (
     <StoreContext.Consumer>
       {({ state, actions }) => (
-        <article className="message-control">
+        <article className={state.cssSheet.classes.messageControl}>
           <h4>Message Control</h4>
           <fieldset className="message-control-layout-a">
             <label>

@@ -20,7 +20,7 @@ jest.mock('../components/StoreContext', () => (
           widgetNames: ['X'],
           isShowingMessage: mockisShowingMessage(),
           message: 'X',
-          cssSheet: { classes: { messageDisplay: 'X' } },
+          cssSheet: { classes: { messageDisplay: 'X', messageControl: 'X' } },
         },
         actions: {
           showMessage: mockshowMessage,

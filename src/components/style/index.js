@@ -113,6 +113,26 @@ const main = {
       },
     },
   },
+  messageControl: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    alignSelf: 'flex-start',
+    padding: '0.5em',
+    background: 'lightgray',
+    margin: '2px',
+    minWidth: '325px',
+    '@global .message-control-layout-a': {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    '@global .message-control-layout-a label': {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+  },
 }
 
 export default main

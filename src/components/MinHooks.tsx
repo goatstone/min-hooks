@@ -1,5 +1,4 @@
 import React from 'react'
-import './MinHooks.css'
 import {
   StoreContext,
 } from './StoreContext'
@@ -20,6 +19,7 @@ const MinHooks: React.FC = () => (
       <section className={state.cssSheet.classes.container}>
         <WidgetHeader />
         <div className="min-hooks-body">
+          {/* <div className="min-hooks-body"> */}
           <div className="widgets-container">
             {
               state.nameUpdateMode === nameUpdateModes.ADD

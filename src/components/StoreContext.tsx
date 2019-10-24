@@ -5,20 +5,15 @@ import preset from 'jss-preset-default'
 import defaultState, { StateInterface } from '../state'
 import reducer, { dispatchInterface } from '../reducer'
 import useAction, { AppActionsInterface } from '../use-action'
+import mainStyle from './style'
 
 export interface StoreContextInterface {
   readonly state: StateInterface
   readonly actions: AppActionsInterface
 }
 //       jss set up
-const style = {
-  container: {
-    background: 'red',
-    color: 'green',
-  },
-}
 jss.setup(preset())
-const sheet = jss.createStyleSheet(style)
+const sheet = jss.createStyleSheet(mainStyle)
 sheet.attach()
 defaultState.cssSheet = sheet
 

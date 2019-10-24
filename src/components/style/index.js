@@ -7,11 +7,6 @@ const main = {
         "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
         sans-serif`,
       color: 'black',
-      '@global .message-display': {
-        position: 'fixed',
-        right: 0,
-        bottom: 0,
-      },
     },
     a: {
       textDecoration: 'underline',
@@ -102,6 +97,19 @@ const main = {
         flexDirection: 'column',
         alignItems: 'flex-start',
         margin: '0.5em',
+      },
+    },
+  },
+  messageDisplay: {
+    position: 'fixed',
+    right: 0,
+    bottom: 0,
+    '@global': {
+      p: {
+        background: 'lightcoral',
+        borderRadius: '0.5em',
+        margin: '1em',
+        padding: '1em',
       },
     },
   },

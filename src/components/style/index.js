@@ -44,6 +44,12 @@ const main = {
       },
     },
   },
+  header: {
+    background: 'lightgray',
+    width: '100%',
+    marginBottom: '0.5em',
+    padding: '0 1em',
+  },
 }
 
 export default main

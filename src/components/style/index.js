@@ -87,6 +87,24 @@ const main = {
       borderBottom: '1px solid #333',
     },
   },
+  updateItem: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    background: 'lightgray',
+    padding: '0.5em',
+    minWidth: '325px',
+    margin: '2px',
+    '@global': {
+      h4: { margin: '0.5em' },
+      fieldset: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        margin: '0.5em',
+      },
+    },
+  },
 }
 
 export default main

@@ -1,12 +1,11 @@
 import React from 'react'
 import { StoreContext } from './StoreContext'
 import { nameUpdateModes } from '../state'
-import './WidgetUpdate.css'
 
 const WidgetUpdate: React.FC = () => (
   <StoreContext.Consumer>
     {({ state, actions }) => (
-      <article className="widget-update-control">
+      <article className={state.cssSheet.classes.updateItem}>
         <h4>
           Update Widget Name
         </h4>

@@ -1,14 +1,13 @@
 import React from 'react'
 import { StoreContext } from './StoreContext'
-import './WidgetAdd.css'
 
 const WidgetAdd: React.FC = () => {
   const [widgetName, setWidgetName] = React.useState('')
 
   return (
     <StoreContext.Consumer>
-      {({ actions }) => (
-        <article className="widget-add-control">
+      {({ state: { cssSheet: { classes: { addItem: addItemCSS } } }, actions }) => (
+        <article className={addItemCSS}>
           <h4>
             Add Widget Name
           </h4>

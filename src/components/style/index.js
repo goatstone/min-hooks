@@ -21,7 +21,7 @@ const main = {
     '@global': {
       h4: { color: 'black' },
     },
-    '@global div.min-hooks-body': {
+    '@global div.frame': {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',

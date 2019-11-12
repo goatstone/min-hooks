@@ -9,6 +9,7 @@ import {
   WidgetList,
   WidgetAdd,
   WidgetUpdate,
+  Frame,
 } from '.'
 import { nameUpdateModes } from '../state'
 
@@ -17,7 +18,9 @@ const MinHooks: React.FC = () => (
     {({ state }) => (
       <section className={state.cssSheet.classes.container}>
         <WidgetHeader />
-        <div className="min-hooks-body">
+        <Frame
+          className="frame"
+        >
           <div className="widgets-container">
             {
               state.nameUpdateMode === nameUpdateModes.ADD
@@ -31,7 +34,7 @@ const MinHooks: React.FC = () => (
           </div>
           <MessageControl />
           <MessageDisplay />
-        </div>
+        </Frame>
       </section>
     )}
   </StoreContext.Consumer>

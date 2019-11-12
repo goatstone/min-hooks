@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Title</title>
+  <meta charset="utf-8">
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+    @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+    @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+    body {
+      font-size: 16px;
+      font-family: 'Droid Serif';
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Yanone Kaffeesatz';
+      font-weight: normal;
+    }
+
+    .remark-code,
+    .remark-inline-code {
+      font-family: 'Ubuntu Mono';
+    }
+
+    .remark-slide-content h1 {
+      font-size: 4em;
+    }
+
+    .remark-slide-content p {
+      font-size: 1.5em;
+    }
+
+    .remark-slide-content ul li {
+      font-size: 2em;
+    }
+
+    .remark-slide-content pre {
+      padding: 0.5em;
+      color: darkgreen;
+      background: #eee;
+    }
+
+    .remark-slide-content pre code {
+      font-size: 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <textarea id="source">
+
+class: center, middle
+
+# MinHooks
+
+A project to layout global and local state patterns with a compact version of commonly used patterns
+
+* React
+* React Hooks
+* React Context
+* A Flux Style Pattern
+
+---
+# The Sample Application
+A basic CRUD application: Create, Read, Update, Delete
+
+The example application functions to enable the maintenance of a list of widget names.
+The user can view, add, update, and delete widgets on this list.
+A messages system exists to display messages.
+
+
+---
+# A Flux Style Pattern
+
+One of the critical points of the Flux pattern is a one-way data flow through Action, Dispatcher, State, and View
+The definition of these components is the definition of the global state.
+
+A dispatcher is defined with the reducer and its use of state and actions:
+```
+function reducer(state: StateInterface, action: UnionInterface): StateInterface {
+  switch (action.type) {
+    case actionTypes.ADD_WIDGET_NAME:
+      return Object.assign({}, state, {...})
+    case actionTypes.EDIT_WIDGET_NAME:
+      return Object.assign(...) },
+      )
+```
+
+---
+# Flux Data Flow
+### Action &#8594; Dispatcher &#8594; State &#8594; View
+What would be a part of the Flux or Redux library is build into React
+
+
+A dispatcher is created with built in React hooks
+```
+const [state, dispatch]: [StateInterface, dispatchInterface] = React
+.useReducer(reducer, defaultState)
+const actions: AppActionsInterface = useAction(state, dispatch)
+```
+---
+# The Provider
+A Provider provides actions and state.
+Use the React Hook useReducer to produce a dispatcher from the reducer function. Use a custom hook useAction to produce an action object from the state and dispatcher.
+```
+const StoreProvider: React.FC = ({ children }) => {
+  const [state, dispatch]: [StateInterface, dispatchInterface] = React
+    .useReducer(reducer, defaultState)
+  const actions: AppActionsInterface = useAction(state, dispatch)
+  return (
+    <StoreContext.Provider value={{ state, actions }}>
+      {children}
+    </StoreContext.Provider>
+  )
+```
+---
+# The Consumer
+Finally the values from the state and actions are consumed by the component.
+```
+<StoreContext.Consumer>
+  {({ state, actions }) => (
+)}
+  // use state and actions here
+</StoreContext.Consumer>
+```
+
+---
+# Testing
+Working with [Jest](https://jestjs.io/en/) to test React is a relief from the multiple libraries necessary previously. Along with the unification of tools are clearer best practices using these tools.
+Unit tests of the components of the global state, along with end to end tests, ensure the working of the patterns throughout development and production. Some of the distinct testing issues that come up with global stae are mocking and end to end testing.
+
+---
+# Mock a Consumer
+One key to testing the components is to take the Consumer out of the test completely by moking it.
+I have found the following style of mock to be very useful. Having a mock like this, that can be later queried for its history is very useful for unit testing.
+```
+const mockaddWidgetName = jest.fn()
+jest.mock('../components/StoreContext', () => (
+  {
+    StoreContext: {
+      Consumer: props => (props.children({
+        actions: {
+          addWidgetName: mockaddWidgetName,
+        },
+      })
+      ),
+    },
+  }
+))
+
+```
+
+---
+# End to End Testing
+Global State does not exist in units. To really test global state, one needs to use some form of end to end testing. I have found that the testing tool  [Cypress](https://www.cypress.io/) is a great way to approach this type of testing. Action and its reaction can be tested, ensuring the global state is functioning in expected ways.
+
+    </textarea>
+  <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+  </script>
+  <script>
+    var slideshow = remark.create();
+  </script>
+</body>
+
+</html>

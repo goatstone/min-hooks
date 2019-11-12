@@ -57,15 +57,16 @@ class: center, middle
 
 # MinHooks
 
-A project to layout global and local state patterns with a compact version of commonly used patterns
+A project to layout global and local state patterns with a compact version of commonly used patterns.
+Global state in React involves a number of pieces some of the main ones being:
 
-* React
+* React Components
 * React Hooks
 * React Context
 * A Flux Style Pattern
 
 ---
-# The Sample Application
+# The Sample Application, MinHooks
 A basic CRUD application: Create, Read, Update, Delete
 
 The example application functions to enable the maintenance of a list of widget names.
@@ -77,7 +78,6 @@ A messages system exists to display messages.
 # A Flux Style Pattern
 
 One of the critical points of the Flux pattern is a one-way data flow through Action, Dispatcher, State, and View
-The definition of these components is the definition of the global state.
 
 A dispatcher is defined with the reducer and its use of state and actions:
 ```
@@ -130,8 +130,18 @@ Finally the values from the state and actions are consumed by the component.
 
 ---
 # Testing
-Working with [Jest](https://jestjs.io/en/) to test React is a relief from the multiple libraries necessary previously. Along with the unification of tools are clearer best practices using these tools.
-Unit tests of the components of the global state, along with end to end tests, ensure the working of the patterns throughout development and production. Some of the distinct testing issues that come up with global stae are mocking and end to end testing.
+Working with Jest to test React is a relief. 
+
+Unit tests of the pieces, 
+Ensure the working of the patterns throughout 
+development and production. Some of the distinct testing issues that come up 
+with global stae are mocking and end to end testing.
+
+### Mock The Consumer, Producer
+
+### Test Flow With End to End Testing
+
+
 
 ---
 # Mock a Consumer
@@ -156,7 +166,11 @@ jest.mock('../components/StoreContext', () => (
 
 ---
 # End to End Testing
-Global State does not exist in units. To really test global state, one needs to use some form of end to end testing. I have found that the testing tool  [Cypress](https://www.cypress.io/) is a great way to approach this type of testing. Action and its reaction can be tested, ensuring the global state is functioning in expected ways.
+To really test global state, one needs to use some form of end to end testing. 
+
+I have found that the testing tool Cypress is a great way to approach this type of testing. 
+
+Action and its reaction can be tested, ensuring the global state is functioning in expected ways.
 
     </textarea>
   <script src="https://remarkjs.com/downloads/remark-latest.min.js">

@@ -7,8 +7,7 @@ import {
   MessageControl,
   WidgetHeader,
   WidgetList,
-  WidgetAdd,
-  WidgetUpdate,
+  AddUpdate,
   Frame,
 } from '.'
 import { nameUpdateModes } from '../state'
@@ -21,17 +20,11 @@ const MinHooks: React.FC = () => (
         <Frame
           className="frame"
         >
-          <div className="widgets-container">
-            {
-              state.nameUpdateMode === nameUpdateModes.ADD
-              && <WidgetAdd />
-            }
-            {
-              state.nameUpdateMode === nameUpdateModes.UPDATE
-              && <WidgetUpdate />
-            }
-            <WidgetList />
-          </div>
+          <AddUpdate
+            mode={state.nameUpdateMode}
+            updateModes={nameUpdateModes}
+          />
+          <WidgetList />
           <MessageControl />
           <MessageDisplay />
         </Frame>

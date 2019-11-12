@@ -4,6 +4,7 @@ import WidgetList from './WidgetList'
 import WidgetAdd from './WidgetAdd'
 import WidgetUpdate from './WidgetUpdate'
 import Frame from './Frame'
+import AddUpdate from './AddUpdate'
 
 export {
   MessageDisplay,
@@ -13,4 +14,5 @@ export {
   WidgetAdd,
   WidgetUpdate,
   Frame,
+  AddUpdate,
 }
